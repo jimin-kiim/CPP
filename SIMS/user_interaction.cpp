@@ -1,5 +1,6 @@
 #include <iostream>
 #include "user_interaction.h"
+#include "student_data.h"
 using namespace std;
 
 void UserInteraction::ShowMainMenu()
@@ -9,24 +10,20 @@ void UserInteraction::ShowMainMenu()
 
 void UserInteraction::ShowInsertionView()
 {
-    string name;
-    int studentId;
-    int birthYear;
-    string department;
-    int tel;
+    Student student;
 
     cout << "Name ? ";
     cin.ignore(256,'\n');
-    getline(cin, name);
+    getline(cin, student.name);
     cout << "Student ID ? (10 digits)";
-    cin >> studentId;
+    cin >> student.studentId;
     cout << "Birth Year ? (4 digits)";
-    cin >> birthYear;
+    cin >> student.birthYear;
     cout << "Department ? ";
     cin.ignore(256,'\n');
-    getline(cin, department);
+    getline(cin, student.department);
     cout << "Tel ? ";
-    cin >> tel;
+    cin >> student.department;
 }
 
 void UserInteraction::ShowSearchView()

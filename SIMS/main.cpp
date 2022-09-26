@@ -25,7 +25,7 @@ int main()
         return 0;
     default:
         cout << "Wrong Input";
-        break;
+        return 0;
     }
     return 0;
 }
