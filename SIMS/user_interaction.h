@@ -6,5 +6,6 @@ public:
     void ShowMainMenu();
     void ShowInsertionView();
     void ShowSearchView();
+    void ShowSearchResultView();
     void ShowSortingOptionView();
 };
