@@ -1,18 +1,24 @@
 #include <iostream>
 using namespace std;
 #include "user_interaction.h"
+#include "student.h"
+#include "functioning.h"
 
 int main()
 {
     int user_input;
     UserInteraction ui;
+    Student student;
+    Fuctioning func;
     ui.ShowMainMenu();
     cin >> user_input;
 
     switch (user_input)
     {
     case 1:
-        ui.ShowInsertionView();
+        student = ui.ShowInsertionView();
+        func.InsertNewData(student);
+        ui.ShowMainMenu();
         break;
     case 2:
         ui.ShowSearchView();

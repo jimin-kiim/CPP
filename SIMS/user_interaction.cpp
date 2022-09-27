@@ -1,6 +1,6 @@
 #include <iostream>
 #include "user_interaction.h"
-#include "student_data.h"
+#include "student.h"
 using namespace std;
 
 void UserInteraction::ShowMainMenu()
@@ -8,22 +8,29 @@ void UserInteraction::ShowMainMenu()
     cout << "1. Insertion\n 2. Search\n 3. Sorting Option\n 4. Exit\n >";
 }
 
-void UserInteraction::ShowInsertionView()
+Student UserInteraction::ShowInsertionView()
 {
-    Student student;
+    string name;
+    int studentId;
+    int birthYear;
+    string department;
+    int tel;
 
     cout << "Name ? ";
-    cin.ignore(256,'\n');
-    getline(cin, student.name);
-    cout << "Student ID ? (10 digits)";
-    cin >> student.studentId;
-    cout << "Birth Year ? (4 digits)";
-    cin >> student.birthYear;
+    cin.ignore();
+    getline(cin, name);
+    cout << "Student ID (10 digits) ? ";
+    cin >> studentId;
+    cout << "Birth Year (4 digits) ? ";
+    cin >> birthYear;
     cout << "Department ? ";
-    cin.ignore(256,'\n');
-    getline(cin, student.department);
+    cin.ignore();
+    getline(cin, department);
     cout << "Tel ? ";
-    cin >> student.department;
+    cin >> department;
+
+    Student student(name, studentId, birthYear, department, tel);
+    return student;
 }
 
 void UserInteraction::ShowSearchView()
@@ -33,7 +40,7 @@ void UserInteraction::ShowSearchView()
     cout << "1. Search by name \n ";
     cout << "2. Search by student ID(10 numbers)\n ";
     cout << "3. Search by admission year(4 numbers)\n ";
-    cout << "4. Search by department name ";
+    cout << "4. Search by department name\n ";
     cout << "5. List All\n";
     cout << "\n >";
     cin >> user_input;

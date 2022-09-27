@@ -3,7 +3,7 @@ class Fuctioning
 
 public:
     Fuctioning(){};
-    void InsertNewData();
+    void InsertNewData(Student);
     void SearchData();
     void SortData();
 };

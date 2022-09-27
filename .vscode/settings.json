@@ -24,6 +24,7 @@
   "files.associations": {
     "iosfwd": "cpp",
     "string": "cpp",
-    "filesystem": "cpp"
+    "filesystem": "cpp",
+    "typeinfo": "cpp"
   }
 }

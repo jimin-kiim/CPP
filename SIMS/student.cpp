@@ -1,21 +1,27 @@
 #include <iostream>
-#include "functioning.h"
+#include "student.h"
 using namespace std;
 
-
-void Student::setName(string name)
+Student::Student(string name, int studentId, int birthYear, string department, int tel)
 {
-
+    this->name = name;
+    this->studentId = studentId;
+    this->birthYear = birthYear;
+    this->department = department;
+    this->tel = tel;
 }
-void Student::setStudentId(int studentId)
-{
-}
-void Student::setBirthYear(int birthYear)
-{
-}
-void Student::setDepartment(string department)
-{
-}
-void Student::setTel(int tel)
-{
-}
+// void Student::setName(string name)
+// {
+// }
+// void Student::setStudentId(int studentId)
+// {
+// }
+// void Student::setBirthYear(int birthYear)
+// {
+// }
+// void Student::setDepartment(string department)
+// {
+// }
+// void Student::setTel(int tel)
+// {
+// }
