@@ -11,10 +11,10 @@ void UserInteraction::ShowMainMenu()
 Student UserInteraction::ShowInsertionView()
 {
     string name;
-    int studentId;
+    string studentId;
     int birthYear;
     string department;
-    int tel;
+    string tel;
 
     cout << "Name ? ";
     cin.ignore();
@@ -27,10 +27,11 @@ Student UserInteraction::ShowInsertionView()
     cin.ignore();
     getline(cin, department);
     cout << "Tel ? ";
-    cin.ignore();
-    cin >> department;
+    cin >> tel;
 
+    cout << name << studentId << birthYear << department << tel;
     Student student(name, studentId, birthYear, department, tel);
+
     return student;
 }
 

@@ -7,15 +7,15 @@ using namespace std;
 class Student
 {
     string name;
-    int studentId;
+    string studentId;
     int birthYear;
     string department;
-    int tel;
+    string tel;
 
 public:
     Student(){};
     // Student(Student &);
-    Student(string, int, int, string, int);
+    Student(string, string, int, string, string);
     // void setName();
     // void setStudentId();
     // void setBirthYear();
@@ -23,10 +23,10 @@ public:
     // void setTel();
 
     string getName(){return name;};
-    int getStudentId(){return studentId;};
+    string getStudentId(){return studentId;};
     int getBirthYear(){return birthYear;};
     string getDepartment(){return department;};
-    int getTel(){return tel;};
+    string getTel(){return tel;};
 };
 
 #endif
