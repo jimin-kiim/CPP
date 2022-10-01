@@ -27,6 +27,7 @@ Student UserInteraction::ShowInsertionView()
     cin.ignore();
     getline(cin, department);
     cout << "Tel ? ";
+    cin.ignore();
     cin >> department;
 
     Student student(name, studentId, birthYear, department, tel);

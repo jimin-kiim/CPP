@@ -7,7 +7,7 @@ using namespace std;
 
 void Fuctioning::InsertNewData(Student student)
 {
-    cout<<"InsertNewData";
+    // cout<<"InsertNewData";
     ofstream myfile;
     myfile.open("file1.txt",ios::app); 
     myfile << student.getName() << ","<< student.getStudentId()<<","<< student.getBirthYear()<<","<<student.getDepartment() << ","<<student.getTel()<<"\n";

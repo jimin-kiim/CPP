@@ -10,28 +10,32 @@ int main()
     UserInteraction ui;
     Student student;
     Fuctioning func;
-    ui.ShowMainMenu();
-    cin >> user_input;
 
-    switch (user_input)
+    while (1)
     {
-    case 1:
-        student = ui.ShowInsertionView();
-        func.InsertNewData(student);
         ui.ShowMainMenu();
-        break;
-    case 2:
-        ui.ShowSearchView();
-        break;
-    case 3:
-        ui.ShowSortingOptionView();
-        break;
-    case 4:
-        cout << "Program ended";
-        return 0;
-    default:
-        cout << "Wrong Input";
-        return 0;
+        cin >> user_input;
+
+        switch (user_input)
+        {
+        case 1:
+            student = ui.ShowInsertionView();
+            func.InsertNewData(student);
+            break;
+        case 2:
+            ui.ShowSearchView();
+            break;
+        case 3:
+            ui.ShowSortingOptionView();
+            break;
+        case 4:
+            cout << "Program ended";
+            return 0;
+        default:
+            cout << "Wrong Input";
+            return 0;
+        }
     }
+
     return 0;
 }
