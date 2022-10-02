@@ -52,7 +52,7 @@ void UserInteraction::ShowSearchView()
     cout << "\n >";
     cin >> user_input;
 
-    string keyword;
+    string keyword = "";
     switch (user_input)
     {
     case 1:
@@ -88,7 +88,8 @@ void UserInteraction::ShowSearchView()
         break;
 
     case 5:
-        // func.SortData(1);
+        func.SearchData(5, keyword);
+        break;
     default:
         cout << "Wrong Input";
         break;
