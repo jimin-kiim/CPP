@@ -8,14 +8,14 @@ class Student
 {
     string name;
     string studentId;
-    int birthYear;
+    string birthYear;
     string department;
     string tel;
 
 public:
     Student(){};
     // Student(Student &);
-    Student(string, string, int, string, string);
+    Student(string, string, string, string, string);
     // void setName();
     // void setStudentId();
     // void setBirthYear();
@@ -24,7 +24,7 @@ public:
 
     string getName(){return name;};
     string getStudentId(){return studentId;};
-    int getBirthYear(){return birthYear;};
+    string getBirthYear(){return birthYear;};
     string getDepartment(){return department;};
     string getTel(){return tel;};
 };

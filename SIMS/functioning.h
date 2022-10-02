@@ -1,9 +1,13 @@
 class Fuctioning
 {
+    int sorting_option = 1;
 
 public:
     Fuctioning(){};
-    void InsertNewData(Student);
+    void CreateData(Student);
     void SearchData(int,string);
-    void SortData(int);
+    void setSortingOption(int option){sorting_option = option;};
+
+    void ReadData();
+    void SortData();
 };

@@ -20,10 +20,11 @@ int main()
         {
         case 1:
             student = ui.ShowInsertionView();
-            func.InsertNewData(student);
+            func.CreateData(student);
             break;
         case 2:
             ui.ShowSearchView();
+            func.ReadData();
             break;
         case 3:
             ui.ShowSortingOptionView();

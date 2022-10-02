@@ -13,7 +13,7 @@ Student UserInteraction::ShowInsertionView()
 {
     string name;
     string studentId;
-    int birthYear;
+    string birthYear;
     string department;
     string tel;
 
@@ -107,6 +107,7 @@ void UserInteraction::ShowSearchResultView()
 void UserInteraction::ShowSortingOptionView()
 {
     int user_input;
+    Fuctioning func;
     cout << "- Sorting Option -\n";
     cout << "1. Sort by Name \n ";
     cout << "2. Sort by Student ID(10 numbers)\n ";
@@ -114,4 +115,5 @@ void UserInteraction::ShowSortingOptionView()
     cout << "4. Sort by Department name ";
     cout << "\n >";
     cin >> user_input;
+    func.setSortingOption(user_input);
 }
