@@ -8,6 +8,6 @@ public:
     void SearchData(int,string);
     void setSortingOption(int option){sorting_option = option;};
 
-    void ReadData();
+    vector<Student> ReadData();
     void SortData();
 };

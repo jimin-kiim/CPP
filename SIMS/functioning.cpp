@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include "user_interaction.h"
 #include "student.h"
 #include "functioning.h"
 
@@ -19,13 +20,22 @@ void Fuctioning::CreateData(Student student)
 void Fuctioning::SearchData(int criteria, string keyword)
 {
     //데이터 읽어와서 저장하고
-
+    vector<Student> students = ReadData();
+    UserInteraction ui;
+    ui.ShowSearchResultHeaderView();
     // search
+    for (int i = 0; i < students.size(); i++)
+    {
+        if (students[i].getName() == keyword)
+        {
+            ui.ShowSearchResultView(students[i]);
+        }
+    }
 
     // search 결과 반환
 }
 
-void Fuctioning::ReadData()
+vector<Student> Fuctioning::ReadData()
 {
     string line;
     ifstream myfile("file1.txt");
@@ -38,17 +48,17 @@ void Fuctioning::ReadData()
             stringstream sstream(line);
             vector<string> tokens;
             string token;
-            int i = 0; 
+            int i = 0;
             while (getline(sstream, token, ','))
             {
                 tokens.push_back(token);
             }
-            Student student(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]);
+            Student student(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4]);
             students.push_back(student);
-            
         }
-        cout << "REad data" << students[0].getName() << students[0].getStudentId() << students[0].getDepartment() << students[0].getBirthYear() << students[0].getTel() ;
+        // cout << "REad data" << students[0].getName() << students[0].getStudentId() << students[0].getDepartment() << students[0].getBirthYear() << students[0].getTel() ;
         myfile.close();
+        return students;
     }
     else
         cout << "Unable to open file";

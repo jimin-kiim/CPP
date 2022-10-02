@@ -62,6 +62,7 @@ void UserInteraction::ShowSearchView()
 
         func.SearchData(1, keyword);
         break;
+
     case 2:
         cout << "Student ID keyword ? ";
         cin.ignore();
@@ -69,6 +70,7 @@ void UserInteraction::ShowSearchView()
 
         func.SearchData(2, keyword);
         break;
+
     case 3:
         cout << "Admission year keyword ? ";
         cin.ignore();
@@ -76,6 +78,7 @@ void UserInteraction::ShowSearchView()
 
         func.SearchData(3, keyword);
         break;
+
     case 4:
         cout << "Department name keyword ? ";
         cin.ignore();
@@ -83,6 +86,7 @@ void UserInteraction::ShowSearchView()
 
         func.SearchData(4, keyword);
         break;
+
     case 5:
         // func.SortData(1);
     default:
@@ -91,7 +95,7 @@ void UserInteraction::ShowSearchView()
     }
 }
 
-void UserInteraction::ShowSearchResultView()
+void UserInteraction::ShowSearchResultHeaderView()
 {
 
     cout.width(15);
@@ -102,6 +106,19 @@ void UserInteraction::ShowSearchResultView()
     cout << "Dept";
     cout << "Birth Year";
     cout << "Tel";
+}
+
+void UserInteraction::ShowSearchResultView(Student student)
+{
+    cout.width(15);
+    cout << student.getName();
+    cout.width(10);
+    cout << student.getStudentId();
+    cout.width(15);
+    cout << student.getDepartment();
+    cout.width(10);
+    cout << student.getBirthYear();
+    cout << student.getTel();
 }
 
 void UserInteraction::ShowSortingOptionView()

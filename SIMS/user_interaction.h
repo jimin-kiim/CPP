@@ -7,6 +7,7 @@ public:
     void ShowMainMenu();
     Student ShowInsertionView();
     void ShowSearchView();
-    void ShowSearchResultView();
+    void ShowSearchResultHeaderView();
+    void ShowSearchResultView(Student);
     void ShowSortingOptionView();
 };

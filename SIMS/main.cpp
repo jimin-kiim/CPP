@@ -24,7 +24,6 @@ int main()
             break;
         case 2:
             ui.ShowSearchView();
-            func.ReadData();
             break;
         case 3:
             ui.ShowSortingOptionView();
