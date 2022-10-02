@@ -13,25 +13,48 @@ Student UserInteraction::ShowInsertionView()
 {
     Functioning func;
 
-    string name;
-    string studentId;
+    string name = " ";
+    string studentId = " ";
     string birthYear;
     string department;
     string tel;
 
     int ok = 0;
-    cout << "Name ? ";
+
     cin.ignore();
-    getline(cin, name);
+    while (1)
+    {
+        cout << "Name ? ";
+        getline(cin, name);
+        if (name[0] == ' ' || name[0] == '\0' || name[0] == '\n')
+        {
+            cout << "Name cannot be blank and cannot start with blank.\n";
+        }
+        else
+        {
+            break;
+        }
+    }
 
     while (1)
     {
         cout << "Student ID (10 digits) ? ";
-        cin >> studentId;
-        ok = func.VerifyStudentId(studentId);
-        if (ok != -1)
+         getline(cin, studentId);
+        if (studentId[0] == ' ' || studentId[0] == '\0' || studentId[0] == '\n')
         {
-            break;
+            cout << "Student ID cannot be blank and cannot start with blank.\n";
+        }
+        else if (studentId.length() != 10)
+        {
+            cout << "Student ID should be 10 digits\n";
+        }
+        else
+        {
+            ok = func.VerifyStudentId(studentId);
+            if (ok != -1)
+            {
+                break;
+            }
         }
     }
 

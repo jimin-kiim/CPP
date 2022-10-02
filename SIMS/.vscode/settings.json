@@ -4,6 +4,8 @@
     "iosfwd": "cpp",
     "istream": "cpp",
     "vector": "cpp",
-    "ios": "cpp"
+    "ios": "cpp",
+    "typeinfo": "cpp",
+    "string": "cpp"
   }
 }
