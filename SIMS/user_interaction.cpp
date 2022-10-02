@@ -39,7 +39,7 @@ Student UserInteraction::ShowInsertionView()
     while (1)
     {
         cout << "Student ID (10 digits) ? ";
-         getline(cin, studentId);
+        getline(cin, studentId);
         if (studentId[0] == ' ' || studentId[0] == '\0' || studentId[0] == '\n')
         {
             cout << "Student ID cannot be blank and cannot start with blank.\n";
@@ -58,17 +58,33 @@ Student UserInteraction::ShowInsertionView()
         }
     }
 
-    cout << "Birth Year (4 digits) ? ";
-    cin >> birthYear;
+    while (1)
+    {
+        cout << "Birth Year (4 digits) ? ";
+        cin >> birthYear;
+        if (birthYear.length() != 4)
+        {
+            cout << "Birth Year should be 4 digits\n";
+        }
+        else
+        {
+            break;
+        }
+    }
 
     cout << "Department ? ";
     cin.ignore();
     getline(cin, department);
 
+    // char arr[13] = {};
     cout << "Tel ? ";
+    // cin.getline(arr, 13);
+    // tel = arr;
+    // cin.ignore(100,'\0');
+    // cin.clear();
     cin >> tel;
-
-    Student student(name, studentId, birthYear, department, tel);
+    string truncated_tel = tel.substr(0, 12);
+    Student student(name, studentId, birthYear, department, truncated_tel);
 
     return student;
 }

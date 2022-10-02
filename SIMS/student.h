@@ -14,13 +14,7 @@ class Student
 
 public:
     Student(){};
-    // Student(Student &);
     Student(string, string, string, string, string);
-    // void setName();
-    // void setStudentId();
-    // void setBirthYear();
-    // void setDepartment();
-    // void setTel();
 
     string getName(){return name;};
     string getStudentId(){return studentId;};
