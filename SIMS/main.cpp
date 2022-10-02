@@ -9,7 +9,7 @@ int main()
     int user_input;
     UserInteraction ui;
     Student student;
-    Fuctioning func;
+    Functioning func;
 
     while (1)
     {

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void Fuctioning::CreateData(Student student)
+void Functioning::CreateData(Student student)
 {
     ofstream myfile;
     myfile.open("file1.txt", ios::app);
@@ -17,13 +17,11 @@ void Fuctioning::CreateData(Student student)
     myfile.close();
 }
 
-void Fuctioning::SearchData(int criteria, string keyword)
+void Functioning::SearchData(int criteria, string keyword)
 {
-    //데이터 읽어와서 저장하고
     vector<Student> students = ReadData();
     UserInteraction ui;
     ui.ShowSearchResultHeaderView();
-    // search
 
     switch (criteria)
     {
@@ -74,11 +72,9 @@ void Fuctioning::SearchData(int criteria, string keyword)
         cout << "Wrong Input";
         break;
     }
-
-    // search 결과 반환
 }
 
-vector<Student> Fuctioning::ReadData()
+vector<Student> Functioning::ReadData()
 {
     string line;
     ifstream myfile("file1.txt");
@@ -99,7 +95,6 @@ vector<Student> Fuctioning::ReadData()
             Student student(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4]);
             students.push_back(student);
         }
-        // cout << "REad data" << students[0].getName() << students[0].getStudentId() << students[0].getDepartment() << students[0].getBirthYear() << students[0].getTel() ;
         myfile.close();
         return students;
     }
@@ -107,9 +102,23 @@ vector<Student> Fuctioning::ReadData()
         cout << "Unable to open file";
 }
 
-void Fuctioning::SortData()
+void Functioning::SortData()
 {
 
     // sort
     // sort 결과 반환
+}
+
+int Functioning::VerifyStudentId(string id)
+{
+    vector<Student> students = ReadData();
+    for (int i = 0; i < students.size(); i++)
+    {
+        if (students[i].getStudentId() == id)
+        {
+            cout << "Error : Already inserted\n";
+            return -1;
+        }
+    }
+    return 0;
 }

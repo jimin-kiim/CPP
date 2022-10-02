@@ -11,18 +11,29 @@ void UserInteraction::ShowMainMenu()
 
 Student UserInteraction::ShowInsertionView()
 {
+    Functioning func;
+
     string name;
     string studentId;
     string birthYear;
     string department;
     string tel;
 
+    int ok = 0;
     cout << "Name ? ";
     cin.ignore();
     getline(cin, name);
 
-    cout << "Student ID (10 digits) ? ";
-    cin >> studentId;
+    while (1)
+    {
+        cout << "Student ID (10 digits) ? ";
+        cin >> studentId;
+        ok = func.VerifyStudentId(studentId);
+        if (ok != -1)
+        {
+            break;
+        }
+    }
 
     cout << "Birth Year (4 digits) ? ";
     cin >> birthYear;
@@ -42,7 +53,7 @@ Student UserInteraction::ShowInsertionView()
 void UserInteraction::ShowSearchView()
 {
     int user_input;
-    Fuctioning func;
+    Functioning func;
     cout << "- Search -\n";
     cout << "1. Search by name \n ";
     cout << "2. Search by student ID(10 numbers)\n ";
@@ -90,6 +101,7 @@ void UserInteraction::ShowSearchView()
     case 5:
         func.SearchData(5, keyword);
         break;
+
     default:
         cout << "Wrong Input";
         break;
@@ -125,7 +137,7 @@ void UserInteraction::ShowSearchResultView(Student student)
 void UserInteraction::ShowSortingOptionView()
 {
     int user_input;
-    Fuctioning func;
+    Functioning func;
     cout << "- Sorting Option -\n";
     cout << "1. Sort by Name \n ";
     cout << "2. Sort by Student ID(10 numbers)\n ";
