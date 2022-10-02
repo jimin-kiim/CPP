@@ -4,6 +4,6 @@ class Fuctioning
 public:
     Fuctioning(){};
     void InsertNewData(Student);
-    void SearchData();
-    void SortData();
+    void SearchData(int,string);
+    void SortData(int);
 };

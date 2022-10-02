@@ -1,6 +1,7 @@
 #include <iostream>
 #include "user_interaction.h"
 #include "student.h"
+#include "functioning.h"
 using namespace std;
 
 void UserInteraction::ShowMainMenu()
@@ -19,17 +20,20 @@ Student UserInteraction::ShowInsertionView()
     cout << "Name ? ";
     cin.ignore();
     getline(cin, name);
+
     cout << "Student ID (10 digits) ? ";
     cin >> studentId;
+
     cout << "Birth Year (4 digits) ? ";
     cin >> birthYear;
+
     cout << "Department ? ";
     cin.ignore();
     getline(cin, department);
+
     cout << "Tel ? ";
     cin >> tel;
 
-    cout << name << studentId << birthYear << department << tel;
     Student student(name, studentId, birthYear, department, tel);
 
     return student;
@@ -38,6 +42,7 @@ Student UserInteraction::ShowInsertionView()
 void UserInteraction::ShowSearchView()
 {
     int user_input;
+    Fuctioning func;
     cout << "- Search -\n";
     cout << "1. Search by name \n ";
     cout << "2. Search by student ID(10 numbers)\n ";
@@ -46,6 +51,44 @@ void UserInteraction::ShowSearchView()
     cout << "5. List All\n";
     cout << "\n >";
     cin >> user_input;
+
+    string keyword;
+    switch (user_input)
+    {
+    case 1:
+        cout << "Name keyword ? ";
+        cin.ignore();
+        getline(cin, keyword);
+
+        func.SearchData(1, keyword);
+        break;
+    case 2:
+        cout << "Student ID keyword ? ";
+        cin.ignore();
+        getline(cin, keyword);
+
+        func.SearchData(2, keyword);
+        break;
+    case 3:
+        cout << "Admission year keyword ? ";
+        cin.ignore();
+        getline(cin, keyword);
+
+        func.SearchData(3, keyword);
+        break;
+    case 4:
+        cout << "Department name keyword ? ";
+        cin.ignore();
+        getline(cin, keyword);
+
+        func.SearchData(4, keyword);
+        break;
+    case 5:
+        // func.SortData(1);
+    default:
+        cout << "Wrong Input";
+        break;
+    }
 }
 
 void UserInteraction::ShowSearchResultView()

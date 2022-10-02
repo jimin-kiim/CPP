@@ -7,14 +7,13 @@ using namespace std;
 
 void Fuctioning::InsertNewData(Student student)
 {
-    // cout<<"InsertNewData";
     ofstream myfile;
     myfile.open("file1.txt",ios::app); 
     myfile << student.getName() << ","<< student.getStudentId()<<","<< student.getBirthYear()<<","<<student.getDepartment() << ","<<student.getTel()<<"\n";
     myfile.close();
 }
 
-void Fuctioning::SearchData()
+void Fuctioning::SearchData(int criteria, string keyword)
 {
     //데이터 읽어와서 저장하고 
     string line;
@@ -26,10 +25,11 @@ void Fuctioning::SearchData()
         myfile.close();
     }else cout << "Unable to open file";
     //search
+
     //search 결과 반환
 }
 
-void Fuctioning::SortData()
+void Fuctioning::SortData(int criteria)
 {
     //데이터 읽어와서 저장하고 
     string line;
