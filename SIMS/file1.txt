@@ -1,2 +1,5 @@
 Kim Jimin,20202330,2001,Computer science and Engineering,01071713351
 Anonymous USer,12345,2001,E D S,010928374
+Jasmin Kim,304050,1998,Design and Tech,0109191823
+JungJung Jung,392910,2004,Design and Tech,1010922
+Anonymous 2,20202330,1998,Computer science and Engineering,010191923

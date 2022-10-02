@@ -24,12 +24,55 @@ void Fuctioning::SearchData(int criteria, string keyword)
     UserInteraction ui;
     ui.ShowSearchResultHeaderView();
     // search
-    for (int i = 0; i < students.size(); i++)
+
+    switch (criteria)
     {
-        if (students[i].getName() == keyword)
+    case 1:
+        for (int i = 0; i < students.size(); i++)
+        {
+            if (students[i].getName() == keyword)
+            {
+                ui.ShowSearchResultView(students[i]);
+            }
+        }
+        break;
+    case 2:
+        for (int i = 0; i < students.size(); i++)
+        {
+            if (students[i].getStudentId() == keyword)
+            {
+                ui.ShowSearchResultView(students[i]);
+            }
+        }
+        break;
+    case 3:
+        for (int i = 0; i < students.size(); i++)
+        {
+            string admission_year = students[i].getStudentId().substr(0, 4);
+            if (admission_year == keyword)
+            {
+                ui.ShowSearchResultView(students[i]);
+            }
+        }
+        break;
+    case 4:
+        for (int i = 0; i < students.size(); i++)
+        {
+            if (students[i].getDepartment() == keyword)
+            {
+                ui.ShowSearchResultView(students[i]);
+            }
+        }
+        break;
+    case 5:
+        for (int i = 0; i < students.size(); i++)
         {
             ui.ShowSearchResultView(students[i]);
         }
+        break;
+    default:
+        cout << "Wrong Input";
+        break;
     }
 
     // search 결과 반환

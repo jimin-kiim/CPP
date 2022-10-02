@@ -99,13 +99,13 @@ void UserInteraction::ShowSearchResultHeaderView()
 {
 
     cout.width(15);
-    cout << "Name";
+    cout << left << "Name";
     cout.width(10);
-    cout << "StudentID";
+    cout << left << "StudentID";
     cout.width(15);
-    cout << "Dept";
+    cout << left << "Dept";
     cout << "Birth Year";
-    cout << "Tel";
+    cout << left << "Tel\n";
 }
 
 void UserInteraction::ShowSearchResultView(Student student)
@@ -118,7 +118,7 @@ void UserInteraction::ShowSearchResultView(Student student)
     cout << student.getDepartment();
     cout.width(10);
     cout << student.getBirthYear();
-    cout << student.getTel();
+    cout << student.getTel() << "\n";
 }
 
 void UserInteraction::ShowSortingOptionView()
