@@ -11,7 +11,6 @@ int main()
     UserInteraction ui;
     Student student;
     Functioning func;
-    // func.setSortingOption(1);
     while (1)
     {
         ui.ShowMainMenu();

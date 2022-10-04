@@ -6,7 +6,7 @@ public:
     Functioning(){};
     void CreateData(Student);
     void SearchData(int,string);
-    void setSortingOption(int option){sorting_option = option; cout << "sorting_option" << sorting_option << "\n";};
+    void setSortingOption(int option){sorting_option = option;};
     int getSortingOption(){return sorting_option;};
 
     vector<Student> ReadData();
