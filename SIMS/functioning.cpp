@@ -8,6 +8,10 @@
 #include "functioning.h"
 
 using namespace std;
+bool compare(string a, string b)
+{
+    return (a > b);
+}
 
 void Functioning::CreateData(Student student)
 {
@@ -20,8 +24,13 @@ void Functioning::CreateData(Student student)
 void Functioning::SearchData(int criteria, string keyword)
 {
     vector<Student> students = ReadData();
+    SortData(students);
     UserInteraction ui;
     ui.ShowSearchResultHeaderView();
+    // for (int i = 0; i < students.size(); i++)
+    //     {
+    //         ui.ShowSearchResultView(students[i]);
+    //     }
 
     switch (criteria)
     {
@@ -102,11 +111,84 @@ vector<Student> Functioning::ReadData()
         cout << "Unable to open file";
 }
 
-void Functioning::SortData()
-{
+// void Functioning::SortData(vector<Student> students)
+// {
+//     switch (sorting_option)
+//     {
+//     case 1:
+//         sort(students.begin()->getName(), students.end()->getName(), compare);
+//         break;
+//     case 2:
+//         sort(students.begin()->getStudentId(), students.end()->getStudentId(), compare);
+//         break;
+//     case 3:
+//         sort(students.begin()->getStudentId().substr(0, 4), students.end()->getStudentId().substr(0, 4), compare);
+//         break;
+//     case 4:
+//         sort(students.begin()->getDepartment(), students.end()->getDepartment(), compare);
+//         break;
+//     default:
+//         cout << "Wrong Input";
+//         break;
+//     }
+// }
 
-    // sort
-    // sort 결과 반환
+bool compareName(Student a, Student b)
+{
+    return (a.getName() > b.getName());
+}
+
+bool compareStudentId(Student a, Student b)
+{
+    return (stoi(a.getStudentId()) > stoi(b.getStudentId()));
+}
+
+bool compareAdmissionYear(Student a, Student b)
+{
+    return (stoi(a.getStudentId().substr(0, 4)) > stoi(b.getStudentId().substr(0, 4)));
+}
+
+bool compareDepartmentName(Student a, Student b)
+{
+    return (a.getDepartment() > b.getDepartment());
+}
+
+void Functioning::SortData(vector<Student> &students)
+{
+    UserInteraction ui;
+    int sorting_option = getSortingOption();
+    cout << "sorting_option" << sorting_option << "\n";
+    switch (sorting_option)
+    {
+    case 1:
+        sort(students.begin(), students.end(), compareName);
+        // for (int i = 0; i < students.size(); i++)
+        // {
+        //     ui.ShowSearchResultView(students[i]);
+        // }
+        break;
+    case 2:
+        sort(students.begin(), students.end(), compareStudentId);
+        // for (int i = 0; i < students.size(); i++)
+        // {
+        //     ui.ShowSearchResultView(students[i]);
+        // }
+        break;
+    case 3:
+        sort(students.begin(), students.end(), compareAdmissionYear);
+        // for (int i = 0; i < students.size(); i++)
+        // {
+        //     ui.ShowSearchResultView(students[i]);
+        // }
+        break;
+    case 4:
+        sort(students.begin(), students.end(), compareDepartmentName);
+        break;
+    default:
+    sort(students.begin(), students.end(), compareName);
+        // cout << "Wrong Input";
+        break;
+    }
 }
 
 int Functioning::VerifyStudentId(string id)

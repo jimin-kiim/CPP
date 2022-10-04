@@ -4,18 +4,18 @@ using namespace std;
 #include "student.h"
 #include "functioning.h"
 
+int Functioning::sorting_option = 1;
 int main()
 {
     int user_input;
     UserInteraction ui;
     Student student;
     Functioning func;
-
+    // func.setSortingOption(1);
     while (1)
     {
         ui.ShowMainMenu();
         cin >> user_input;
-        // cout << "user_input" << user_input<<"\n";
         switch (user_input)
         {
         case 1:

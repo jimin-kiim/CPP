@@ -76,12 +76,7 @@ Student UserInteraction::ShowInsertionView()
     cin.ignore();
     getline(cin, department);
 
-    // char arr[13] = {};
     cout << "Tel ? ";
-    // cin.getline(arr, 13);
-    // tel = arr;
-    // cin.ignore(100,'\0');
-    // cin.clear();
     cin >> tel;
     string truncated_tel = tel.substr(0, 12);
     Student student(name, studentId, birthYear, department, truncated_tel);
@@ -152,7 +147,7 @@ void UserInteraction::ShowSearchResultHeaderView()
 
     cout.width(15);
     cout << left << "Name";
-    cout.width(10);
+    cout.width(11);
     cout << left << "StudentID";
     cout.width(15);
     cout << left << "Dept";
@@ -164,7 +159,7 @@ void UserInteraction::ShowSearchResultView(Student student)
 {
     cout.width(15);
     cout << student.getName();
-    cout.width(10);
+    cout.width(11);
     cout << student.getStudentId();
     cout.width(15);
     cout << student.getDepartment();
