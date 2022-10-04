@@ -6,7 +6,7 @@ using namespace std;
 
 void UserInteraction::ShowMainMenu()
 {
-    cout<<"\n";
+    cout << "\n";
     cout << " 1. Insertion\n 2. Search\n 3. Sorting Option\n 4. Exit\n > ";
 }
 
@@ -30,6 +30,10 @@ Student UserInteraction::ShowInsertionView()
         if (name[0] == ' ' || name[0] == '\0' || name[0] == '\n')
         {
             cout << "Name cannot be blank and cannot start with blank.\n";
+        }
+        else if (name.length() > 15)
+        {
+            cout << "Name has up to 15 (English) charaters.\n";
         }
         else
         {
@@ -77,11 +81,21 @@ Student UserInteraction::ShowInsertionView()
     cin.ignore();
     getline(cin, department);
 
-    cout << "Tel ? ";
-    cin >> tel;
-    string truncated_tel = tel.substr(0, 12);
-    Student student(name, studentId, birthYear, department, truncated_tel);
+    while (1)
+    {
+        cout << "Tel ? ";
+        cin >> tel;
+        if (tel.length() > 12)
+        {
+            cout << "Tel has up to 12 digits.\n";
+        }
+        else
+        {
+            break;
+        }
+    }
 
+    Student student(name, studentId, birthYear, department, tel);
     return student;
 }
 
@@ -89,7 +103,7 @@ void UserInteraction::ShowSearchView()
 {
     int user_input;
     Functioning func;
-    cout<<"\n";
+    cout << "\n";
     cout << " - Search -\n ";
     cout << "1. Search by name \n ";
     cout << "2. Search by student ID(10 numbers)\n ";
@@ -146,7 +160,7 @@ void UserInteraction::ShowSearchView()
 
 void UserInteraction::ShowSearchResultHeaderView()
 {
-    cout<<"\n";
+    cout << "\n";
     cout.width(15);
     cout << left << "Name";
     cout.width(11);
@@ -174,7 +188,7 @@ void UserInteraction::ShowSortingOptionView()
 {
     int user_input;
     Functioning func;
-    cout<<"\n";
+    cout << "\n";
     cout << " - Sorting Option -\n ";
     cout << "1. Sort by Name \n ";
     cout << "2. Sort by Student ID(10 numbers)\n ";
