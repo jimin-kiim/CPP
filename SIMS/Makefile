@@ -13,4 +13,5 @@ user_interaction.o: user_interaction.h user_interaction.cpp functioning.h functi
 functioning.o: user_interaction.h user_interaction.cpp functioning.h functioning.cpp student.h student.cpp
 	g++ -c functioning.cpp
 
-
+clean:
+	rm -f *.o
