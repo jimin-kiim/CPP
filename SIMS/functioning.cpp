@@ -8,6 +8,8 @@
 #include "functioning.h"
 
 using namespace std;
+
+enum option {NAME = 1, STUDENT_ID, ADMISSION_YEAR, DEPARTMENT, ALL};
 bool compare(string a, string b)
 {
     return (a > b);
@@ -30,7 +32,7 @@ void Functioning::SearchData(int criteria, string keyword)
 
     switch (criteria)
     {
-    case 1:
+    case NAME:
         for (int i = 0; i < students.size(); i++)
         {
             if (students[i].getName() == keyword)
@@ -39,7 +41,7 @@ void Functioning::SearchData(int criteria, string keyword)
             }
         }
         break;
-    case 2:
+    case STUDENT_ID:
         for (int i = 0; i < students.size(); i++)
         {
             if (students[i].getStudentId() == keyword)
@@ -48,7 +50,7 @@ void Functioning::SearchData(int criteria, string keyword)
             }
         }
         break;
-    case 3:
+    case ADMISSION_YEAR:
         for (int i = 0; i < students.size(); i++)
         {
             string admission_year = students[i].getStudentId().substr(0, 4);
@@ -58,7 +60,7 @@ void Functioning::SearchData(int criteria, string keyword)
             }
         }
         break;
-    case 4:
+    case DEPARTMENT:
         for (int i = 0; i < students.size(); i++)
         {
             if (students[i].getDepartment() == keyword)
@@ -67,7 +69,7 @@ void Functioning::SearchData(int criteria, string keyword)
             }
         }
         break;
-    case 5:
+    case ALL:
         for (int i = 0; i < students.size(); i++)
         {
             ui.ShowSearchResultView(students[i]);
@@ -134,16 +136,16 @@ void Functioning::SortData(vector<Student> &students)
     int sorting_option = getSortingOption();
     switch (sorting_option)
     {
-    case 1:
+    case NAME:
         sort(students.begin(), students.end(), compareName);
         break;
-    case 2:
+    case STUDENT_ID:
         sort(students.begin(), students.end(), compareStudentId);
         break;
-    case 3:
+    case ADMISSION_YEAR:
         sort(students.begin(), students.end(), compareAdmissionYear);
         break;
-    case 4:
+    case DEPARTMENT:
         sort(students.begin(), students.end(), compareDepartmentName);
         break;
     default:

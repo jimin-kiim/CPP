@@ -4,6 +4,7 @@
 #include "functioning.h"
 using namespace std;
 
+enum option {NAME = 1, STUDENT_ID, ADMISSION_YEAR, DEPARTMENT, ALL};
 void UserInteraction::ShowMainMenu()
 {
     cout << "\n";
@@ -116,7 +117,7 @@ void UserInteraction::ShowSearchView()
     string keyword = "";
     switch (user_input)
     {
-    case 1:
+    case NAME:
         cout << " Name keyword ? ";
         cin.ignore();
         getline(cin, keyword);
@@ -124,7 +125,7 @@ void UserInteraction::ShowSearchView()
         func.SearchData(1, keyword);
         break;
 
-    case 2:
+    case STUDENT_ID:
         cout << " Student ID keyword ? ";
         cin.ignore();
         getline(cin, keyword);
@@ -132,7 +133,7 @@ void UserInteraction::ShowSearchView()
         func.SearchData(2, keyword);
         break;
 
-    case 3:
+    case ADMISSION_YEAR:
         cout << " Admission year keyword ? ";
         cin.ignore();
         getline(cin, keyword);
@@ -140,7 +141,7 @@ void UserInteraction::ShowSearchView()
         func.SearchData(3, keyword);
         break;
 
-    case 4:
+    case DEPARTMENT:
         cout << " Department name keyword ? ";
         cin.ignore();
         getline(cin, keyword);
@@ -148,7 +149,7 @@ void UserInteraction::ShowSearchView()
         func.SearchData(4, keyword);
         break;
 
-    case 5:
+    case ALL:
         func.SearchData(5, keyword);
         break;
 
@@ -165,23 +166,23 @@ void UserInteraction::ShowSearchResultHeaderView()
     cout << left << "Name";
     cout.width(11);
     cout << left << "StudentID";
-    cout.width(15);
+    cout.width(17);
     cout << left << "Dept";
-    cout << "Birth Year ";
-    cout << left << "Tel\n";
+    cout << " Birth Year";
+    cout << left << " Tel\n";
 }
 
 void UserInteraction::ShowSearchResultView(Student student)
 {
     cout.width(15);
-    cout << student.getName();
+    cout << left << student.getName();
     cout.width(11);
     cout << student.getStudentId();
-    cout.width(15);
+    cout.width(17);
     cout << student.getDepartment();
     cout.width(11);
-    cout << student.getBirthYear();
-    cout << student.getTel() << "\n";
+    cout << right << student.getBirthYear();
+    cout << " " << student.getTel() << "\n";
 }
 
 void UserInteraction::ShowSortingOptionView()

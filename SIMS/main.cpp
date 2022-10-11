@@ -4,7 +4,9 @@ using namespace std;
 #include "student.h"
 #include "functioning.h"
 
+enum option {INSERTION = 1, SEARCHING, SORTING, EXIT };
 int Functioning::sorting_option = 1;
+
 int main()
 {
     int user_input;
@@ -17,17 +19,17 @@ int main()
         cin >> user_input;
         switch (user_input)
         {
-        case 1:
+        case INSERTION:
             student = ui.ShowInsertionView();
             func.CreateData(student);
             break;
-        case 2:
+        case SEARCHING:
             ui.ShowSearchView();
             break;
-        case 3:
+        case SORTING:
             ui.ShowSortingOptionView();
             break;
-        case 4:
+        case EXIT:
             cout << "Program ended";
             return 0;
         default:
