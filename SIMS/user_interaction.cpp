@@ -182,7 +182,7 @@ void UserInteraction::ShowSearchResultView(Student student)
     cout << student.getDepartment();
     cout.width(11);
     cout << right << student.getBirthYear();
-    cout << " " << student.getTel() << "\n";
+    cout << left << " " << student.getTel() << "\n";
 }
 
 void UserInteraction::ShowSortingOptionView()
