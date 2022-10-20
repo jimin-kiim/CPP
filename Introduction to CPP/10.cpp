@@ -5,20 +5,27 @@ using namespace std;
 int main(){
     streampos size;
     char * memblock;
-    ifstream file("example.bin", ios::in|ios::binary|ios::ate);
+    ifstream file("example.bin", ios::in|ios::binary|ios::ate); // move the file position to the end of the file
     if (file.is_open()){
 
-        //get the size of the file
+        // get the size of the file (since the position was moved to the end of the file)
+        // since the mode is reading mode, tellg is used instead of tellp
         size = file.tellg();
 
-        // prepare a space whose size is the size of the file
-        memblock = new char [size];
+        // prepare a space whose size is the size of the file, in dynamic memory allocation method
+        // and the memblock points to the space(array)
+        memblock = new char [size]; 
 
-        // move the file pointer to the starting point of the file
+        // move the file pointer(current file position) to the beginning of the file
+        // since the mode is reading mode, seekg is used instead of seekp
         file.seekg (0, ios::beg);
 
-        // start reading the file from the beginning and store it.
-        // move the information from the file to the main memory
+        /* 
+            moving the information from the file to the main memory
+            read the file as much as the 'size'bytes and store it to where the memblock points.
+            it's read from the beginning,
+            since the position of file pointer was set at the beginning of the file by above code.
+        */
         file.read(memblock, size);
 
         // close the file
@@ -30,3 +37,10 @@ int main(){
 
     return 0;
 }
+/*
+Binary file processing
+write( memory_block, size );
+read( memory_block, size ); // the file is read as much as the 'size' bytes and stored into the 'memory_block'
+// memory block: is a pointer that points to some memory block
+// size: the unit of size if bytes
+*/
