@@ -21,15 +21,3 @@ int main()
 
     return 0;
 }
-/*
-Get and Put Stream Positioning
-reading - get, writing - put
-- tellg(), tellp() 
-    returns the current get/put position
-- seekg(), seekp()
-    changes the location of the get/put position
-    seekg(position) or seekg(offset, direction)
-    - ios::beg : offset counted from the beginning of the stream
-    - ios::cur : offset counted from the current position
-    - ios::end : offset counted from the enc of the stream
-*/

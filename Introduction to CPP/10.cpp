@@ -37,10 +37,3 @@ int main(){
 
     return 0;
 }
-/*
-Binary file processing
-write( memory_block, size );
-read( memory_block, size ); // the file is read as much as the 'size' bytes and stored into the 'memory_block'
-// memory block: is a pointer that points to some memory block
-// size: the unit of size if bytes
-*/
