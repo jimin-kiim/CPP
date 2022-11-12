@@ -1,10 +1,9 @@
 //
 //  main.cpp
-//  Arkanoid Game
+//  Arkanoid
 //
-//  Created by 김지민 on 2022/11/07.
+//  Created by 김지민 on 2022/11/12.
 //
-
 /* Simple geometry viewer:  Left mouse: rotate;  Right mouse:   translate;  ESC to quit. */
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>

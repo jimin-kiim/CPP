@@ -1,6 +1,6 @@
 //
 //  CSphere.hpp
-//  Arkanoid Game
+//  Arkanoid
 //
 //  Created by 김지민 on 2022/11/12.
 //

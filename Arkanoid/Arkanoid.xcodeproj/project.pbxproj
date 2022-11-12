@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D19F2CD291FBF65002696D4 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A71E4291F5E6F006B54EF /* functions.cpp */; };
-		4D8A71DE291F5D2C006B54EF /* CSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A71DC291F5D2C006B54EF /* CSphere.cpp */; };
-		4D8A71E1291F5D5F006B54EF /* CWall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A71DF291F5D5F006B54EF /* CWall.cpp */; };
-		4D8A71E3291F5E18006B54EF /* constants.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A71E2291F5E18006B54EF /* constants.hpp */; };
-		4DE7694B2918ED8F00747F79 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE7694A2918ED8F00747F79 /* main.cpp */; };
-		4DE769532918EDC200747F79 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE769522918EDC200747F79 /* OpenGL.framework */; };
-		4DE769552918EDD200747F79 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE769542918EDD200747F79 /* GLUT.framework */; };
+		4D19F2DB291FBFCF002696D4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D19F2DA291FBFCF002696D4 /* main.cpp */; };
+		4D19F2E3291FBFD8002696D4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D19F2E2291FBFD8002696D4 /* GLUT.framework */; };
+		4D19F2E5291FBFE5002696D4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D19F2E4291FBFE5002696D4 /* OpenGL.framework */; };
+		4D19F2E8291FBFF8002696D4 /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D19F2E6291FBFF8002696D4 /* functions.cpp */; };
+		4D19F2EB291FC004002696D4 /* constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D19F2E9291FC004002696D4 /* constants.cpp */; };
+		4D19F2EE291FC017002696D4 /* CWall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D19F2EC291FC017002696D4 /* CWall.cpp */; };
+		4D19F2F1291FC045002696D4 /* CSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D19F2EF291FC045002696D4 /* CSphere.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4DE769452918ED8F00747F79 /* CopyFiles */ = {
+		4D19F2D5291FBFCF002696D4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -29,69 +29,71 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4D8A71DC291F5D2C006B54EF /* CSphere.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSphere.cpp; sourceTree = "<group>"; };
-		4D8A71DD291F5D2C006B54EF /* CSphere.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSphere.hpp; sourceTree = "<group>"; };
-		4D8A71DF291F5D5F006B54EF /* CWall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CWall.cpp; sourceTree = "<group>"; };
-		4D8A71E0291F5D5F006B54EF /* CWall.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CWall.hpp; sourceTree = "<group>"; };
-		4D8A71E2291F5E18006B54EF /* constants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
-		4D8A71E4291F5E6F006B54EF /* functions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
-		4D8A71E5291F5E6F006B54EF /* functions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = functions.hpp; sourceTree = "<group>"; };
-		4DE769472918ED8F00747F79 /* Arkanoid Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Arkanoid Game"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DE7694A2918ED8F00747F79 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		4DE769522918EDC200747F79 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		4DE769542918EDD200747F79 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		4D19F2D7291FBFCF002696D4 /* Arkanoid */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Arkanoid; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D19F2DA291FBFCF002696D4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4D19F2E2291FBFD8002696D4 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		4D19F2E4291FBFE5002696D4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		4D19F2E6291FBFF8002696D4 /* functions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
+		4D19F2E7291FBFF8002696D4 /* functions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = functions.hpp; sourceTree = "<group>"; };
+		4D19F2E9291FC004002696D4 /* constants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = constants.cpp; sourceTree = "<group>"; };
+		4D19F2EA291FC004002696D4 /* constants.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
+		4D19F2EC291FC017002696D4 /* CWall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CWall.cpp; sourceTree = "<group>"; };
+		4D19F2ED291FC017002696D4 /* CWall.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CWall.hpp; sourceTree = "<group>"; };
+		4D19F2EF291FC045002696D4 /* CSphere.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSphere.cpp; sourceTree = "<group>"; };
+		4D19F2F0291FC045002696D4 /* CSphere.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSphere.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4DE769442918ED8F00747F79 /* Frameworks */ = {
+		4D19F2D4291FBFCF002696D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DE769552918EDD200747F79 /* GLUT.framework in Frameworks */,
-				4DE769532918EDC200747F79 /* OpenGL.framework in Frameworks */,
+				4D19F2E3291FBFD8002696D4 /* GLUT.framework in Frameworks */,
+				4D19F2E5291FBFE5002696D4 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4DE7693E2918ED8F00747F79 = {
+		4D19F2CE291FBFCF002696D4 = {
 			isa = PBXGroup;
 			children = (
-				4DE769492918ED8F00747F79 /* Arkanoid Game */,
-				4DE769482918ED8F00747F79 /* Products */,
-				4DE769512918EDC200747F79 /* Frameworks */,
+				4D19F2D9291FBFCF002696D4 /* Arkanoid */,
+				4D19F2D8291FBFCF002696D4 /* Products */,
+				4D19F2E1291FBFD8002696D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		4DE769482918ED8F00747F79 /* Products */ = {
+		4D19F2D8291FBFCF002696D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DE769472918ED8F00747F79 /* Arkanoid Game */,
+				4D19F2D7291FBFCF002696D4 /* Arkanoid */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4DE769492918ED8F00747F79 /* Arkanoid Game */ = {
+		4D19F2D9291FBFCF002696D4 /* Arkanoid */ = {
 			isa = PBXGroup;
 			children = (
-				4DE7694A2918ED8F00747F79 /* main.cpp */,
-				4D8A71E5291F5E6F006B54EF /* functions.hpp */,
-				4D8A71E4291F5E6F006B54EF /* functions.cpp */,
-				4D8A71E2291F5E18006B54EF /* constants.hpp */,
-				4D8A71E0291F5D5F006B54EF /* CWall.hpp */,
-				4D8A71DF291F5D5F006B54EF /* CWall.cpp */,
-				4D8A71DD291F5D2C006B54EF /* CSphere.hpp */,
-				4D8A71DC291F5D2C006B54EF /* CSphere.cpp */,
+				4D19F2DA291FBFCF002696D4 /* main.cpp */,
+				4D19F2EC291FC017002696D4 /* CWall.cpp */,
+				4D19F2ED291FC017002696D4 /* CWall.hpp */,
+				4D19F2EF291FC045002696D4 /* CSphere.cpp */,
+				4D19F2F0291FC045002696D4 /* CSphere.hpp */,
+				4D19F2E9291FC004002696D4 /* constants.cpp */,
+				4D19F2EA291FC004002696D4 /* constants.hpp */,
+				4D19F2E6291FBFF8002696D4 /* functions.cpp */,
+				4D19F2E7291FBFF8002696D4 /* functions.hpp */,
 			);
-			path = "Arkanoid Game";
+			path = Arkanoid;
 			sourceTree = "<group>";
 		};
-		4DE769512918EDC200747F79 /* Frameworks */ = {
+		4D19F2E1291FBFD8002696D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DE769542918EDD200747F79 /* GLUT.framework */,
-				4DE769522918EDC200747F79 /* OpenGL.framework */,
+				4D19F2E4291FBFE5002696D4 /* OpenGL.framework */,
+				4D19F2E2291FBFD8002696D4 /* GLUT.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,38 +101,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4DE769462918ED8F00747F79 /* Arkanoid Game */ = {
+		4D19F2D6291FBFCF002696D4 /* Arkanoid */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DE7694E2918ED8F00747F79 /* Build configuration list for PBXNativeTarget "Arkanoid Game" */;
+			buildConfigurationList = 4D19F2DE291FBFCF002696D4 /* Build configuration list for PBXNativeTarget "Arkanoid" */;
 			buildPhases = (
-				4DE769432918ED8F00747F79 /* Sources */,
-				4DE769442918ED8F00747F79 /* Frameworks */,
-				4DE769452918ED8F00747F79 /* CopyFiles */,
+				4D19F2D3291FBFCF002696D4 /* Sources */,
+				4D19F2D4291FBFCF002696D4 /* Frameworks */,
+				4D19F2D5291FBFCF002696D4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Arkanoid Game";
-			productName = "Arkanoid Game";
-			productReference = 4DE769472918ED8F00747F79 /* Arkanoid Game */;
+			name = Arkanoid;
+			productName = Arkanoid;
+			productReference = 4D19F2D7291FBFCF002696D4 /* Arkanoid */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4DE7693F2918ED8F00747F79 /* Project object */ = {
+		4D19F2CF291FBFCF002696D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					4DE769462918ED8F00747F79 = {
+					4D19F2D6291FBFCF002696D4 = {
 						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
-			buildConfigurationList = 4DE769422918ED8F00747F79 /* Build configuration list for PBXProject "Arkanoid Game" */;
+			buildConfigurationList = 4D19F2D2291FBFCF002696D4 /* Build configuration list for PBXProject "Arkanoid" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -138,33 +140,33 @@
 				en,
 				Base,
 			);
-			mainGroup = 4DE7693E2918ED8F00747F79;
-			productRefGroup = 4DE769482918ED8F00747F79 /* Products */;
+			mainGroup = 4D19F2CE291FBFCF002696D4;
+			productRefGroup = 4D19F2D8291FBFCF002696D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4DE769462918ED8F00747F79 /* Arkanoid Game */,
+				4D19F2D6291FBFCF002696D4 /* Arkanoid */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4DE769432918ED8F00747F79 /* Sources */ = {
+		4D19F2D3291FBFCF002696D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D8A71DE291F5D2C006B54EF /* CSphere.cpp in Sources */,
-				4DE7694B2918ED8F00747F79 /* main.cpp in Sources */,
-				4D19F2CD291FBF65002696D4 /* functions.cpp in Sources */,
-				4D8A71E1291F5D5F006B54EF /* CWall.cpp in Sources */,
-				4D8A71E3291F5E18006B54EF /* constants.hpp in Sources */,
+				4D19F2DB291FBFCF002696D4 /* main.cpp in Sources */,
+				4D19F2F1291FC045002696D4 /* CSphere.cpp in Sources */,
+				4D19F2EE291FC017002696D4 /* CWall.cpp in Sources */,
+				4D19F2E8291FBFF8002696D4 /* functions.cpp in Sources */,
+				4D19F2EB291FC004002696D4 /* constants.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4DE7694C2918ED8F00747F79 /* Debug */ = {
+		4D19F2DC291FBFCF002696D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -222,7 +224,7 @@
 			};
 			name = Debug;
 		};
-		4DE7694D2918ED8F00747F79 /* Release */ = {
+		4D19F2DD291FBFCF002696D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -273,7 +275,7 @@
 			};
 			name = Release;
 		};
-		4DE7694F2918ED8F00747F79 /* Debug */ = {
+		4D19F2DF291FBFCF002696D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -285,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		4DE769502918ED8F00747F79 /* Release */ = {
+		4D19F2E0291FBFCF002696D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -300,25 +302,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4DE769422918ED8F00747F79 /* Build configuration list for PBXProject "Arkanoid Game" */ = {
+		4D19F2D2291FBFCF002696D4 /* Build configuration list for PBXProject "Arkanoid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DE7694C2918ED8F00747F79 /* Debug */,
-				4DE7694D2918ED8F00747F79 /* Release */,
+				4D19F2DC291FBFCF002696D4 /* Debug */,
+				4D19F2DD291FBFCF002696D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DE7694E2918ED8F00747F79 /* Build configuration list for PBXNativeTarget "Arkanoid Game" */ = {
+		4D19F2DE291FBFCF002696D4 /* Build configuration list for PBXNativeTarget "Arkanoid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DE7694F2918ED8F00747F79 /* Debug */,
-				4DE769502918ED8F00747F79 /* Release */,
+				4D19F2DF291FBFCF002696D4 /* Debug */,
+				4D19F2E0291FBFCF002696D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4DE7693F2918ED8F00747F79 /* Project object */;
+	rootObject = 4D19F2CF291FBFCF002696D4 /* Project object */;
 }

@@ -4,6 +4,9 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+#ifndef constants_hpp
+#define constants_hpp
+
 #include <GLUT/glut.h>
 #include <stdio.h>
 
@@ -54,3 +57,5 @@ bool leftButton = false, middleButton = false, rightButton = false;
 int i,j;
 GLfloat light0Position[] = { 0, 1, 0, 1.0};
 int displayMenu, mainMenu;
+
+#endif

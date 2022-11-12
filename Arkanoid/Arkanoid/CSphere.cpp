@@ -1,6 +1,6 @@
 //
 //  CSphere.cpp
-//  Arkanoid Game
+//  Arkanoid
 //
 //  Created by 김지민 on 2022/11/12.
 //
@@ -8,7 +8,7 @@
 #include <GLUT/glut.h>
 
 #include "CSphere.hpp"
-//#include "constants.hpp"
+#include "constants.hpp"
 
 CSphere:: CSphere()
 {
@@ -37,7 +37,7 @@ void CSphere::setColor(float r, float g, float b)
 void CSphere::draw()
 {
     glLoadIdentity();
-//    glTranslatef(0.0,0.0,-sdepth);
+    glTranslatef(0.0,0.0,-sdepth);
     glMultMatrixd(m_mRotate);
     glTranslated(center_x,center_y,center_z);
     glColor3f(color_r, color_g, color_b);
