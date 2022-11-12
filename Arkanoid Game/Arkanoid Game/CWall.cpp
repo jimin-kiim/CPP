@@ -8,7 +8,7 @@
 #include <GLUT/glut.h>
 
 #include "CWall.hpp"
-//#include "constants.hpp"
+#include "sources.hpp"
 
 CWall::CWall(float w, float h, float d)
 {
@@ -22,7 +22,7 @@ CWall::CWall(float w, float h, float d)
             if (j==0) coef=w/2.0;
             if (j==1) coef=h/2.0;
             if (j==2) coef=d/2.0;
-//            Verts[i][j]=coef*BoxVerts[i][j];
+            Verts[i][j]=coef*BoxVerts[i][j];
         }
     }
 }
@@ -56,7 +56,7 @@ void CWall::setColor(float r, float g, float b)
 void CWall::draw()
 {
     glLoadIdentity();
-//    glTranslatef(0.0,0.0,-sdepth);
+    glTranslatef(0.0,0.0,-sdepth);
     glMultMatrixd(m_mRotate);
     glTranslatef(center_x,center_y,center_z);
     
@@ -66,19 +66,19 @@ void CWall::draw()
     int v1,v2,v3,v4;
     
     for (i = 0 ; i < 6 ; i++) {
-//        v1 = cubeIndices[i][0];
-//        v2 = cubeIndices[i][1];
-//        v3 = cubeIndices[i][2];
-//        v4 = cubeIndices[i][3];
-//
-//        glBegin (GL_QUADS) ;
-//        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
-//        glVertex3f( Verts[v1][0],Verts[v1][1],Verts[v1][2]);
-//        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
+        v1 = cubeIndices[i][0];
+        v2 = cubeIndices[i][1];
+        v3 = cubeIndices[i][2];
+        v4 = cubeIndices[i][3];
+
+        glBegin (GL_QUADS) ;
+        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
+        glVertex3f( Verts[v1][0],Verts[v1][1],Verts[v1][2]);
+        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
         glVertex3f( Verts[v2][0],Verts[v2][1],Verts[v2][2]);
-//        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
+        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
         glVertex3f( Verts[v3][0],Verts[v3][1],Verts[v3][2]);
-//        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
+        glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
         glVertex3f( Verts[v4][0],Verts[v4][1],Verts[v4][2]);
         glEnd () ;
     }
