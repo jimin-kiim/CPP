@@ -9,11 +9,12 @@
 #include <assert.h>
 #include <math.h>
 #include <stdlib.h>
-
+#include <iostream>
+#define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 // you may try "#include <GL/glut.h>" if "#include <GLUT/glut.h>" wouldn't work
 //#include <GL/glut.h>
-
+using namespace std;
 //GLdouble rotMatrix[4][16];
 const int NO_SPHERE=3;
 const int WALL_ID=1000;
@@ -65,6 +66,7 @@ int displayMenu, mainMenu;
 void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
 void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
 void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
+//void detectCollision();
 void renderScene();
 
 
@@ -75,14 +77,14 @@ public:
     float color_r,color_g,color_b;
     float dir_x,dir_y,dir_z;
     float speed;
-
-public :
+    
+    public :
     GLdouble m_mRotate[16];
     CSphere()
     {
-        center_x=center_y=center_z=0.0;
+        center_x=center_y=center_z=0.0; // 중심 지정 안 해주면 영점.
     }
-
+    
     void init()
     {
         glMatrixMode(GL_MODELVIEW);
@@ -91,45 +93,60 @@ public :
         glGetDoublev(GL_MODELVIEW_MATRIX, m_mRotate);
         glPopMatrix();
     }
-
+    
     void setCenter(float x, float y, float z)
     {
         center_x=x;    center_y=y;    center_z=z;
     }
-
+    
     void setColor(float r, float g, float b)
     {
         color_r=r; color_g=g; color_b=b;
     }
-
+    
     void draw()
     {
         glLoadIdentity();
         glTranslatef(0.0,0.0,-sdepth);
         glMultMatrixd(m_mRotate);
-        glTranslated(center_x,center_y,center_z);
+        glTranslated(center_x, center_y, center_z);
         glColor3f(color_r, color_g, color_b);
-        glutSolidSphere(0.5,20,16);
+        glutSolidSphere(0.5, 20, 16);
     }
+    
+    bool hasIntersected(CSphere& ball) {
+        float distance= pow(pow(this->center_x - ball.center_x,2) + pow(this->center_y - ball.center_y,2),1/2);
+        if (distance == 1) {
+            return true;
+        }
+        return false;
+        // 본인 중심 & 가까운 공의 중심 거리가 지름이랑 같으면 true. 아니면 false
+    } // check if there is collision between two spheres
+    
+    void hitBy(CSphere& ball) {
+        this->dir_x = this->center_x - ball.center_x;
+        this->dir_y = this->center_y - ball.center_y;
+        this->dir_z = this->center_z - ball.center_z;
+    } // what needs to be done if there is collision between two spheres.
 };
 
 class CWall
 {
-
+    
 public:
     float width, height, depth;
     float center_x, center_y, center_z;
     float color_r,color_g,color_b;
-
+    
     GLfloat Verts[8][3];
-
-public :
+    
+    public :
     GLdouble m_mRotate[16];
     CWall(float w=0.0, float h=0.0, float d=0.0)
     {
         width=w; height=h; depth=d;
         color_r=0.0; color_g=1.0; color_b=0.0;
-
+        
         int i,j;
         float coef;
         for (i=0;i<8;i++) {
@@ -141,7 +158,7 @@ public :
             }
         }
     }
-
+    
     void init()
     {
         glMatrixMode(GL_MODELVIEW);
@@ -150,42 +167,42 @@ public :
         glGetDoublev(GL_MODELVIEW_MATRIX, m_mRotate);
         glPopMatrix();
     }
-
+    
     void setSize(float w, float h, float d)
     {
         width=w;
         height=h;
         depth=d;
     }
-
+    
     void setCenter(float x, float y, float z)
     {
         center_x=x;    center_y=y;    center_z=z;
     }
-
+    
     void setColor(float r, float g, float b)
     {
         color_r=r; color_g=g; color_b=b;
     }
-
+    
     void draw()
     {
         glLoadIdentity();
         glTranslatef(0.0,0.0,-sdepth);
         glMultMatrixd(m_mRotate);
         glTranslatef(center_x,center_y,center_z);
-
+        
         glColor3f(color_r, color_g, color_b);
-
+        
         int i;
         int v1,v2,v3,v4;
-
+        
         for (i = 0 ; i < 6 ; i++) {
             v1 = cubeIndices[i][0];
             v2 = cubeIndices[i][1];
             v3 = cubeIndices[i][2];
             v4 = cubeIndices[i][3];
-
+            
             glBegin (GL_QUADS) ;
             glNormal3f( bNorms[i][0],bNorms[i][1],bNorms[i][2]);
             glVertex3f( Verts[v1][0],Verts[v1][1],Verts[v1][2]);
@@ -198,10 +215,20 @@ public :
             glEnd () ;
         }
     }
+    
+//    bool hasIntersected(CSphere& ball) {
+//
+//    } // check if there is collision between a sphere and a wall
+    
+    //    void hitBy(CSphere& ball) {
+    //        ball.dir_x = {닿은 지점 x} - ball.center_x;
+    //        ball.dir_y = g_wall.center_y - ball.center_y;
+    //        ball.dir_z = g_wall.center_z - ball.center_z;
+    //    } // what needs to be done if there is collision between a sphere and a wall
 };
 
-CSphere g_sphere[3];
-CWall g_wall(11,0.2,11);
+CSphere g_sphere[45];
+CWall g_wall(20,0.2,15);
 
 void ReshapeCallback(int width, int height)
 {
@@ -212,9 +239,10 @@ void ReshapeCallback(int width, int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(64.0, aspect, zNear, zFar);
+    gluLookAt(0,15,10, 0,5,0, 0,1,0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
+    
     glutPostRedisplay();
 }
 
@@ -224,10 +252,10 @@ void DisplayCallback(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-
+    
     for (i=0;i<NO_SPHERE;i++) g_sphere[i].draw();
     g_wall.draw();
-
+    
     glutSwapBuffers();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -238,23 +266,27 @@ void KeyboardCallback(unsigned char ch, int x, int y)
 {
     switch (ch)
     {
-    case '1' : choice=1; break;
-    case '2' : choice=2; break;
-    case '3' : choice=3; break;
-
-    case 32 :
-        if (space_flag) space_flag=0;
-        else {
-            space_flag=1;
-            g_sphere[0].dir_x = g_sphere[2].center_x - g_sphere[0].center_x;
-            g_sphere[0].dir_y = g_sphere[2].center_y - g_sphere[0].center_y;
-            g_sphere[0].dir_z = g_sphere[2].center_z - g_sphere[0].center_z;
-        }
-        break; // SPACE_KEY
-
-    case 27:
-        exit(0);
-        break;
+        case '1' : choice=1; break;
+        case '2' : choice=2; break;
+        case '3' : choice=3; break;
+            
+        case 32 :
+            if (space_flag) {
+                space_flag=0;
+//                detectCollision();
+            }
+            else {
+                space_flag=1; // 스페이스바 눌리면 움직일 방향 설정
+//                detectCollision();
+                g_sphere[0].dir_x = g_sphere[2].center_x - g_sphere[0].center_x;
+                g_sphere[0].dir_y = g_sphere[2].center_y - g_sphere[0].center_y;
+                g_sphere[0].dir_z = g_sphere[2].center_z - g_sphere[0].center_z;
+            }
+            break; // SPACE_KEY
+            
+        case 27:
+            exit(0);
+            break;
     }
     glutPostRedisplay();
 }
@@ -273,14 +305,14 @@ void rotate(int id)
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
-
+    
     glRotated(((double)rotate_y), 1.0, 0.0, 0.0);
     glRotated(((double)rotate_x), 0.0, 1.0, 0.0);
-
+    
     if (id<NO_SPHERE) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_sphere[id].m_mRotate);
     }
-
+    
     if (id==WALL_ID) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_wall.m_mRotate);
     }
@@ -288,6 +320,7 @@ void rotate(int id)
 }
 
 void MotionCallback(int x, int y) {
+//    cout << "MOTION";
     int tdx=x-downX,tdy=0,tdz=y-downY,id=choice-1;
     if (leftButton) {
         rotate_x += x-downX;
@@ -325,10 +358,10 @@ void InitGL() {
     glLightfv (GL_LIGHT0, GL_POSITION, light0Position);
     glEnable(GL_LIGHT0);
     initRotate();
-
+    
     glShadeModel(GL_SMOOTH);
     glEnable(GL_LIGHTING);
-
+//    glutIdleFunc(detectCollision);
     glutIdleFunc(renderScene);
     glutReshapeFunc(ReshapeCallback);
     glutDisplayFunc(DisplayCallback);
@@ -336,7 +369,13 @@ void InitGL() {
     glutMouseFunc(MouseCallback);
     glutMotionFunc(MotionCallback);
 }
-
+void detectCollision(){
+    cout << "detectCollision";
+        for (int i = 1; i<3; i++){
+            bool has_intersected = g_sphere[0].hasIntersected(g_sphere[i]);
+            if(has_intersected) g_sphere[0].hitBy(g_sphere[i]);
+        }
+}
 int currentTime, previousTime=-1;
 void renderScene()
 {
@@ -347,25 +386,27 @@ void renderScene()
     float x=g_sphere[0].center_x;
     float y=g_sphere[0].center_y;
     float z=g_sphere[0].center_z;
-
-    if (space_flag) g_sphere[0].setCenter(
-        x+timeDelta*0.002*g_sphere[0].dir_x,
-        y+timeDelta*0.002*g_sphere[0].dir_y,
-        z+timeDelta*0.002*g_sphere[0].dir_z);
+    
+    if (space_flag) {
+        g_sphere[0].setCenter(
+                              x+timeDelta*0.002*g_sphere[0].dir_x,
+                              y+timeDelta*0.002*g_sphere[0].dir_y,
+                              z+timeDelta*0.002*g_sphere[0].dir_z);}
+    
     glutPostRedisplay();
     previousTime=currentTime;
-
+    
 }
 
 void InitObjects()
 {
     // specify initial colors and center positions of each spheres
-    g_sphere[0].setColor(0.8,0.2,0.2); g_sphere[0].setCenter(0.0,0.0,0.0);
+    g_sphere[0].setColor(0.8,0.2,0.2); g_sphere[0].setCenter(-8.0,0.0,0.0);
     g_sphere[1].setColor(0.2,0.8,0.2); g_sphere[1].setCenter(1.0,0.0,0.0);
     g_sphere[2].setColor(0.2,0.2,0.8); g_sphere[2].setCenter(0.0,0.0,1.0);
-
+    
     // specify initial colors and center positions of a wall
-    g_wall.setColor(0.0,1.0,0.0); g_wall.setCenter(0.0,-0.6,0.0);
+    g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);
 }
 
 int main(int argc, char **argv)
