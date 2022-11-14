@@ -228,7 +228,8 @@ public:
 };
 
 CSphere g_sphere[45];
-CWall g_wall(20,0.2,15);
+CWall g_wall(20,0.2,15); // w, h, d
+CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
 
 void ReshapeCallback(int width, int height)
 {
@@ -255,6 +256,7 @@ void DisplayCallback(void)
     
     for (i=0;i<NO_SPHERE;i++) g_sphere[i].draw();
     g_wall.draw();
+    for (i=0;i<3;i++) g_walls[i].draw();
     
     glutSwapBuffers();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -315,6 +317,10 @@ void rotate(int id)
     
     if (id==WALL_ID) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_wall.m_mRotate);
+        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[0].m_mRotate);
+        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[1].m_mRotate);
+        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[2].m_mRotate);
+//        glGetDoublev(GL_MODELVIEW_MATRIX, g_wall.m_mRotate);
     }
     glPopMatrix();
 }
@@ -335,10 +341,15 @@ void MotionCallback(int x, int y) {
 }
 
 void initRotate() {
-    g_sphere[0].init();
-    g_sphere[1].init();
-    g_sphere[2].init();
+    for (i=0;i<NO_SPHERE;i++) g_sphere[i].init();
+    
+//    g_sphere[1].init();
+//    g_sphere[2].init();
     g_wall.init();
+    for (i=0;i<3;i++) g_walls[i].init();
+//    g_walls[0].init();
+//    g_walls[1].init();
+//    g_walls[2].init();
 }
 
 void InitGL() {
@@ -391,7 +402,8 @@ void renderScene()
         g_sphere[0].setCenter(
                               x+timeDelta*0.002*g_sphere[0].dir_x,
                               y+timeDelta*0.002*g_sphere[0].dir_y,
-                              z+timeDelta*0.002*g_sphere[0].dir_z);}
+                              z+timeDelta*0.002*g_sphere[0].dir_z);
+    }
     
     glutPostRedisplay();
     previousTime=currentTime;
@@ -407,6 +419,16 @@ void InitObjects()
     
     // specify initial colors and center positions of a wall
     g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);
+    
+    for (int i = 0; i<3; i++){
+        g_walls[i].setColor(0.0,0.6,0.0);
+    }
+//    CWall g_wall(20,0.2,15);
+//    CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
+    g_walls[0].setCenter(0.0,0.0,-7.5);
+    g_walls[1].setCenter(0.0,0.0,7.5);
+    g_walls[2].setCenter(10.0,0.0,0.0);
+    
 }
 
 int main(int argc, char **argv)
