@@ -4,6 +4,8 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+
+#define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 #include <stdio.h>
@@ -12,6 +14,13 @@
 #include "sources.hpp"
 using namespace std;
 //GLdouble rotMatrix[4][16];
+
+CSphere g_user;
+CSphere g_shooting_ball;
+CSphere g_sphere[45];
+CWall g_wall(20,0.2,15); // w, h, d
+CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
+
 const int NO_SPHERE=3;
 const int WALL_ID=1000;
 int rotate_x=0, rotate_y=0;
@@ -57,9 +66,6 @@ bool leftButton = false, middleButton = false, rightButton = false;
 int i,j;
 GLfloat light0Position[] = { 0, 1, 0, 1.0};
 int displayMenu, mainMenu;
-CSphere g_sphere[45];
-CWall g_wall(20,0.2,15); // w, h, d
-CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
 int space_flag=0;
 int currentTime, previousTime=-1;
 
@@ -82,10 +88,11 @@ void DisplayCallback(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    
+    g_user.draw();
+    g_shooting_ball.draw();
     for (i=0;i<NO_SPHERE;i++) g_sphere[i].draw();
-    g_wall.draw();
     for (i=0;i<3;i++) g_walls[i].draw();
+    g_wall.draw();
     glutSwapBuffers();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -124,6 +131,9 @@ void MouseCallback(int button, int state, int x, int y)
     glutPostRedisplay();
 }
 
+//CSPhere g_user;
+//CSPhere g_shooting_ball;
+
 void rotate(int id)
 {
     glMatrixMode(GL_MODELVIEW);
@@ -135,6 +145,8 @@ void rotate(int id)
     
     if (id<NO_SPHERE) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_sphere[id].m_mRotate);
+        glGetDoublev(GL_MODELVIEW_MATRIX, g_user.m_mRotate);
+        glGetDoublev(GL_MODELVIEW_MATRIX, g_shooting_ball.m_mRotate);
     }
     
     if (id==WALL_ID) {
@@ -159,11 +171,14 @@ void MotionCallback(int x, int y) {
     downX = x;   downY = y;
     glutPostRedisplay();
 }
-
+//CSPhere g_user;
+//CSPhere g_shooting_ball;
 void initRotate() {
     for (i=0;i<NO_SPHERE;i++) g_sphere[i].init();
-    g_wall.init();
     for (i=0;i<3;i++) g_walls[i].init();
+    g_wall.init();
+    g_user.init();
+    g_shooting_ball.init();
 }
 
 void InitGL() {
@@ -229,12 +244,15 @@ void renderScene()
     
 }
 
+//CSPhere g_user;
+//CSPhere g_shooting_ball;
 void InitObjects()
 {
-    // specify initial colors and center positions of each spheres
-    g_sphere[0].setColor(0.8,0.2,0.2); g_sphere[0].setCenter(-8.0,0.0,0.0);
-    g_sphere[1].setColor(0.2,0.8,0.2); g_sphere[1].setCenter(1.0,0.0,0.0);
-    g_sphere[2].setColor(0.2,0.2,0.8); g_sphere[2].setCenter(0.0,0.0,1.0);
+    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(-10.0+SPHERE_RADIUS, 0.0, 0.0);
+    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(-10.0+ 3*SPHERE_RADIUS, 0.0, 0.0);
+    g_sphere[0].setColor(0.8, 0.2, 0.2); g_sphere[0].setCenter(0.0, 0.0, 0.0);
+    g_sphere[1].setColor(0.2, 0.8, 0.2); g_sphere[1].setCenter(1.0, 0.0, 0.0);
+    g_sphere[2].setColor(0.2, 0.2, 0.8); g_sphere[2].setCenter(0.0, 0.0, 1.0);
     
     // specify initial colors and center positions of a wall
     g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);

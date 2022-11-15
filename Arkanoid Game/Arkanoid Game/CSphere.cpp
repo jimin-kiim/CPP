@@ -56,7 +56,13 @@ bool CSphere::hasIntersected(CSphere& ball) {
 } // check if there is collision between two spheres
 
 void CSphere::hitBy(CSphere& ball) {
-    this->dir_x = this->center_x - ball.center_x;
-    this->dir_y = this->center_y - ball.center_y;
-    this->dir_z = this->center_z - ball.center_z;
+    dir_x = center_x - ball.center_x;
+    dir_y = center_y - ball.center_y;
+    dir_z = center_z - ball.center_z;
 } // what needs to be done if there is collision between two spheres.
+
+// 사용자 공, 움직일 공.
+// 사용자 공과의 반대 방향으로 움직일 공이 날아감.
+// 사용자 공의 이동은
+// 밖으로 나가면 다시 사용자 공 위로
+// 
