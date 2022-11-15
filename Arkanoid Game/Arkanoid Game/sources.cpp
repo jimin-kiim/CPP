@@ -57,7 +57,7 @@ int i,j;
 GLfloat light0Position[] = { 0, 1, 0, 1.0};
 int displayMenu, mainMenu;
 CSphere g_sphere[3];
-CWall g_wall = CWall(11,0.2,11);
+CWall g_wall(11,0.2,11);
 int space_flag=0;
 int currentTime, previousTime=-1;
 
