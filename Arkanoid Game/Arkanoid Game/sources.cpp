@@ -97,11 +97,16 @@ void DisplayCallback(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+//CSphere g_user;
+//CSphere g_shooting_ball;
 void KeyboardCallback(unsigned char ch, int x, int y)
 {
     switch (ch)
     {
-        case '1' : choice=1; break;
+        case '1' :
+            cout << "<<<<case1" << endl;
+            choice=1;
+            break;
         case '2' : choice=2; break;
         case '3' : choice=3; break;
             
@@ -109,11 +114,25 @@ void KeyboardCallback(unsigned char ch, int x, int y)
             if (space_flag) space_flag=0;
             else {
                 space_flag=1;
-                g_sphere[0].dir_x = g_sphere[2].center_x - g_sphere[0].center_x;
-                g_sphere[0].dir_y = g_sphere[2].center_y - g_sphere[0].center_y;
-                g_sphere[0].dir_z = g_sphere[2].center_z - g_sphere[0].center_z;
+//                g_shooting_ball.dir_x = g_user.center_x - g_shooting_ball.center_x;
+//                g_shooting_ball.dir_y = g_user.center_y - g_shooting_ball.center_y;
+//                g_shooting_ball.dir_z = g_user.center_z - g_shooting_ball.center_z;
+                g_shooting_ball.dir_x = g_shooting_ball.center_x - g_user.center_x;
+                g_shooting_ball.dir_y = g_shooting_ball.center_y - g_user.center_y;
+                g_shooting_ball.dir_z = g_shooting_ball.center_z - g_user.center_z;
             }
             break; // SPACE_KEY
+            
+        case 37 :
+            g_user.center_x -= 1.0;
+            g_shooting_ball.center_x -= 1.0;
+            
+            break; // LEFT ARROW
+            
+        case 39 :
+            g_user.center_x += 1.0;
+            g_shooting_ball.center_x += 1.0;
+            break; // RIGHT ARROW
             
         case 27:
             exit(0);
@@ -213,9 +232,9 @@ void InitGL() {
 void detectCollision(){
 //    cout << "detectCollision";
     for (int i = 1; i<3; i++){
-        bool has_intersected = g_sphere[0].hasIntersected(g_sphere[i]);
-        cout << has_intersected << endl;
-        if(has_intersected) g_sphere[0].hitBy(g_sphere[i]);
+        bool has_intersected = g_shooting_ball.hasIntersected(g_sphere[i]);
+//        cout << has_intersected << endl;
+        if(has_intersected) g_shooting_ball.hitBy(g_sphere[i]);
     }
 }
 
@@ -224,21 +243,31 @@ void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
 void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
 
 
+//CSPhere g_user;
+//CSPhere g_shooting_ball;
 void renderScene()
 {
     int timeDelta;
     currentTime = glutGet(GLUT_ELAPSED_TIME);
     if (previousTime==-1) timeDelta=0;
     else timeDelta = currentTime - previousTime;
-    float x=g_sphere[0].center_x;
-    float y=g_sphere[0].center_y;
-    float z=g_sphere[0].center_z;
+    float x=g_shooting_ball.center_x;
+    float y=g_shooting_ball.center_y;
+    float z=g_shooting_ball.center_z;
 //    cout << x << endl;
     detectCollision();
-    if (space_flag) g_sphere[0].setCenter(
-                                          x+timeDelta*0.002*g_sphere[0].dir_x,
-                                          y+timeDelta*0.002*g_sphere[0].dir_y,
-                                          z+timeDelta*0.002*g_sphere[0].dir_z);
+    if (space_flag) {
+        g_shooting_ball.setCenter(x+timeDelta*0.002*g_shooting_ball.dir_x,
+                              y+timeDelta*0.002*g_shooting_ball.dir_y,
+                              z+timeDelta*0.002*g_shooting_ball.dir_z);
+//        g_user.setCenter(x+timeDelta*0.002*g_user.dir_x,
+//                         y+timeDelta*0.002*g_user.dir_y,
+//                         z+timeDelta*0.002*g_user.dir_z);
+//        g_shooting_ball.setCenter(x+timeDelta*0.002*g_shooting_ball.dir_x,
+//                                  y+timeDelta*0.002*g_shooting_ball.dir_y,
+//                                  z+timeDelta*0.002*g_shooting_ball.dir_z);
+    }
+        
     glutPostRedisplay();
     previousTime=currentTime;
     
