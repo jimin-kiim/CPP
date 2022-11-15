@@ -4,6 +4,7 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+#define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 #include <math.h>
@@ -45,12 +46,13 @@ void CSphere::draw()
 }
 
 bool CSphere::hasIntersected(CSphere& ball) {
-    float distance= pow(pow(this->center_x - ball.center_x,2) + pow(this->center_y - ball.center_y,2),1/2);
-    if (distance == 1) {
+    float distance= sqrt(pow(center_x - ball.center_x,2) + pow(center_y - ball.center_y,2));
+    
+    if (distance <= 2*SPHERE_RADIUS) {
         return true;
     }
     return false;
-    // 본인 중심 & 가까운 공의 중심 거리가 지름이랑 같으면 true. 아니면 false
+    // 공의 중심 거리가 지름이랑 같으면 true. 아니면 false
 } // check if there is collision between two spheres
 
 void CSphere::hitBy(CSphere& ball) {

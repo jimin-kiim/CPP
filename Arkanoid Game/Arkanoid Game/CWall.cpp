@@ -5,13 +5,15 @@
 //  Created by 김지민 on 2022/11/12.
 //
 #define SPHERE_RADIUS 0.5
-#define GL_SILENCE_DEPRECATION
 
+#define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
+
 #include <iostream>
 #include "CWall.hpp"
 #include "sources.hpp"
 using namespace std;
+
 CWall::CWall(float w, float h, float d)
 {
     width=w; height=h; depth=d;
