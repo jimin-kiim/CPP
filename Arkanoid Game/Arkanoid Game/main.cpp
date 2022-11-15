@@ -10,6 +10,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <iostream>
+#define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 // you may try "#include <GL/glut.h>" if "#include <GLUT/glut.h>" wouldn't work
@@ -18,6 +19,7 @@ using namespace std;
 //GLdouble rotMatrix[4][16];
 const int NO_SPHERE=3;
 const int WALL_ID=1000;
+//const int SPHERE_RADIUS = 0.5;
 
 int rotate_x=0, rotate_y=0;
 int choice=1;
@@ -99,6 +101,11 @@ public:
         center_x=x;    center_y=y;    center_z=z;
     }
     
+//    void getCenter(float x, float y, float z)
+//    {
+//        center_x=x;    center_y=y;    center_z=z;
+//    }
+    
     void setColor(float r, float g, float b)
     {
         color_r=r; color_g=g; color_b=b;
@@ -111,7 +118,7 @@ public:
         glMultMatrixd(m_mRotate);
         glTranslated(center_x, center_y, center_z);
         glColor3f(color_r, color_g, color_b);
-        glutSolidSphere(0.5, 20, 16);
+        glutSolidSphere(SPHERE_RADIUS, 20, 16);
     }
     
     bool hasIntersected(CSphere& ball) {
@@ -215,10 +222,19 @@ public:
             glEnd () ;
         }
     }
-    
-//    bool hasIntersected(CSphere& ball) {
-//
-//    } // check if there is collision between a sphere and a wall
+//    g_walls[0].setCenter(0.0,0.0,-7.5);
+//    g_walls[1].setCenter(0.0,0.0,7.5);
+//    g_walls[2].setCenter(10.0,0.0,0.0);
+//    CWall g_wall(20,0.2,15);
+    bool hasIntersected(CSphere& ball) {
+        if (ball.center_x <= (-7.5 + SPHERE_RADIUS) || ball.center_x >= (7.5 - SPHERE_RADIUS)  || ball.center_y >= (10 - SPHERE_RADIUS)) {
+            cout << ">>>>hasIntersected TRUE"<< endl;
+            return true;
+        }
+        cout << ">>>>hasIntersected FALSE"<< endl;
+        return false;
+    }
+    // check if there is collision between a sphere and a wall
     
     //    void hitBy(CSphere& ball) {
     //        ball.dir_x = {닿은 지점 x} - ball.center_x;
@@ -342,14 +358,8 @@ void MotionCallback(int x, int y) {
 
 void initRotate() {
     for (i=0;i<NO_SPHERE;i++) g_sphere[i].init();
-    
-//    g_sphere[1].init();
-//    g_sphere[2].init();
     g_wall.init();
     for (i=0;i<3;i++) g_walls[i].init();
-//    g_walls[0].init();
-//    g_walls[1].init();
-//    g_walls[2].init();
 }
 
 void InitGL() {
@@ -423,8 +433,7 @@ void InitObjects()
     for (int i = 0; i<3; i++){
         g_walls[i].setColor(0.0,0.6,0.0);
     }
-//    CWall g_wall(20,0.2,15);
-//    CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
+    
     g_walls[0].setCenter(0.0,0.0,-7.5);
     g_walls[1].setCenter(0.0,0.0,7.5);
     g_walls[2].setCenter(10.0,0.0,0.0);
