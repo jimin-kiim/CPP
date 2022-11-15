@@ -14,8 +14,8 @@
 #include "CWall.hpp"
 
 //GLdouble rotMatrix[4][16];
-extern const int NO_SPHERE=3;
-extern const int WALL_ID=1000;
+extern const int NO_SPHERE;
+extern const int WALL_ID;
 
 extern int rotate_x, rotate_y;
 extern int choice;
@@ -38,14 +38,14 @@ extern int i,j;
 extern GLfloat light0Position[];
 extern int displayMenu, mainMenu;
 
-CSphere g_sphere[3];
-CWall g_wall(11,0.2,11);
+extern CSphere g_sphere[3];
+extern CWall g_wall;
 extern int space_flag;
 extern int currentTime, previousTime;
 
-extern void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
-extern void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
-extern void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
+extern void MyIdleFunc(void); /* things to do while idle */
+extern void RunIdleFunc(void);
+extern void PauseIdleFunc(void);
 extern void renderScene();
 
 extern void ReshapeCallback(int width, int height);

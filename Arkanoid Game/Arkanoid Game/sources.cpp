@@ -11,7 +11,8 @@
 
 #include "sources.hpp"
 //GLdouble rotMatrix[4][16];
-
+const int NO_SPHERE=3;
+const int WALL_ID=1000;
 int rotate_x=0, rotate_y=0;
 int choice=1;
 
@@ -55,7 +56,8 @@ bool leftButton = false, middleButton = false, rightButton = false;
 int i,j;
 GLfloat light0Position[] = { 0, 1, 0, 1.0};
 int displayMenu, mainMenu;
-
+CSphere g_sphere[3];
+CWall g_wall = CWall(11,0.2,11);
 int space_flag=0;
 int currentTime, previousTime=-1;
 
@@ -188,6 +190,9 @@ void InitGL() {
     glutMotionFunc(MotionCallback);
 }
 
+void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
+void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
+void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
 void renderScene()
 {
     int timeDelta;
