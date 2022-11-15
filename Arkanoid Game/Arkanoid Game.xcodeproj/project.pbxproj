@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D19F2F2291FC829002696D4 /* CSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A71DC291F5D2C006B54EF /* CSphere.cpp */; };
+		4D19F2F3291FC835002696D4 /* CWall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A71DF291F5D5F006B54EF /* CWall.cpp */; };
+		4D19F2F6291FCC68002696D4 /* sources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D19F2F5291FCC68002696D4 /* sources.cpp */; };
 		4DE7694B2918ED8F00747F79 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE7694A2918ED8F00747F79 /* main.cpp */; };
 		4DE769532918EDC200747F79 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE769522918EDC200747F79 /* OpenGL.framework */; };
 		4DE769552918EDD200747F79 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE769542918EDD200747F79 /* GLUT.framework */; };
@@ -25,6 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D19F2F5291FCC68002696D4 /* sources.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sources.cpp; sourceTree = "<group>"; };
+		4D8A71DC291F5D2C006B54EF /* CSphere.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSphere.cpp; sourceTree = "<group>"; };
+		4D8A71DD291F5D2C006B54EF /* CSphere.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSphere.hpp; sourceTree = "<group>"; };
+		4D8A71DF291F5D5F006B54EF /* CWall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CWall.cpp; sourceTree = "<group>"; };
+		4D8A71E0291F5D5F006B54EF /* CWall.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CWall.hpp; sourceTree = "<group>"; };
+		4D8A71E2291F5E18006B54EF /* sources.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sources.hpp; sourceTree = "<group>"; };
 		4DE769472918ED8F00747F79 /* Arkanoid Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Arkanoid Game"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE7694A2918ED8F00747F79 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4DE769522918EDC200747F79 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -65,6 +74,12 @@
 			isa = PBXGroup;
 			children = (
 				4DE7694A2918ED8F00747F79 /* main.cpp */,
+				4D8A71E2291F5E18006B54EF /* sources.hpp */,
+				4D19F2F5291FCC68002696D4 /* sources.cpp */,
+				4D8A71E0291F5D5F006B54EF /* CWall.hpp */,
+				4D8A71DF291F5D5F006B54EF /* CWall.cpp */,
+				4D8A71DD291F5D2C006B54EF /* CSphere.hpp */,
+				4D8A71DC291F5D2C006B54EF /* CSphere.cpp */,
 			);
 			path = "Arkanoid Game";
 			sourceTree = "<group>";
@@ -135,6 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D19F2F3291FC835002696D4 /* CWall.cpp in Sources */,
+				4D19F2F2291FC829002696D4 /* CSphere.cpp in Sources */,
+				4D19F2F6291FCC68002696D4 /* sources.cpp in Sources */,
 				4DE7694B2918ED8F00747F79 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

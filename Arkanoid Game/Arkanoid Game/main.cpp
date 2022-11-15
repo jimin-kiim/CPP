@@ -13,6 +13,9 @@
 #define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
+
+#include "sources.hpp"
+
 // you may try "#include <GL/glut.h>" if "#include <GLUT/glut.h>" wouldn't work
 //#include <GL/glut.h>
 using namespace std;
