@@ -8,8 +8,9 @@
 #include <GLUT/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <iostream>
 #include "sources.hpp"
+using namespace std;
 //GLdouble rotMatrix[4][16];
 const int NO_SPHERE=3;
 const int WALL_ID=1000;
@@ -56,8 +57,11 @@ bool leftButton = false, middleButton = false, rightButton = false;
 int i,j;
 GLfloat light0Position[] = { 0, 1, 0, 1.0};
 int displayMenu, mainMenu;
-CSphere g_sphere[3];
-CWall g_wall(11,0.2,11);
+CSphere g_sphere[45];
+CWall g_wall(20,0.2,15); // w, h, d
+CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
+//CSphere g_sphere[3];
+//CWall g_wall(11,0.2,11);
 int space_flag=0;
 int currentTime, previousTime=-1;
 
@@ -70,6 +74,7 @@ void ReshapeCallback(int width, int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(64.0, aspect, zNear, zFar);
+    gluLookAt(0,15,10, 0,5,0, 0,1,0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glutPostRedisplay();
@@ -82,7 +87,7 @@ void DisplayCallback(void)
 
     for (i=0;i<NO_SPHERE;i++) g_sphere[i].draw();
     g_wall.draw();
-
+    for (i=0;i<3;i++) g_walls[i].draw();
     glutSwapBuffers();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -136,6 +141,9 @@ void rotate(int id)
 
     if (id==WALL_ID) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_wall.m_mRotate);
+        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[0].m_mRotate);
+                glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[1].m_mRotate);
+                glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[2].m_mRotate);
     }
     glPopMatrix();
 }
@@ -153,12 +161,18 @@ void MotionCallback(int x, int y) {
     downX = x;   downY = y;
     glutPostRedisplay();
 }
+//
+//void initRotate() {
+//    g_sphere[0].init();
+//    g_sphere[1].init();
+//    g_sphere[2].init();
+//    g_wall.init();
+//}
 
 void initRotate() {
-    g_sphere[0].init();
-    g_sphere[1].init();
-    g_sphere[2].init();
+    for (i=0;i<NO_SPHERE;i++) g_sphere[i].init();
     g_wall.init();
+    for (i=0;i<3;i++) g_walls[i].init();
 }
 
 void InitGL() {
@@ -193,6 +207,16 @@ void InitGL() {
 void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
 void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
 void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
+
+void detectCollision(){
+    cout << "detectCollision";
+        for (int i = 1; i<3; i++){
+            bool has_intersected = g_sphere[0].hasIntersected(g_sphere[i]);
+            if(has_intersected) g_sphere[0].hitBy(g_sphere[i]);
+        }
+}
+
+
 void renderScene()
 {
     int timeDelta;
@@ -215,10 +239,19 @@ void renderScene()
 void InitObjects()
 {
     // specify initial colors and center positions of each spheres
-    g_sphere[0].setColor(0.8,0.2,0.2); g_sphere[0].setCenter(0.0,0.0,0.0);
+    g_sphere[0].setColor(0.8,0.2,0.2); g_sphere[0].setCenter(-8.0,0.0,0.0);
     g_sphere[1].setColor(0.2,0.8,0.2); g_sphere[1].setCenter(1.0,0.0,0.0);
     g_sphere[2].setColor(0.2,0.2,0.8); g_sphere[2].setCenter(0.0,0.0,1.0);
-
+    
     // specify initial colors and center positions of a wall
-    g_wall.setColor(0.0,1.0,0.0); g_wall.setCenter(0.0,-0.6,0.0);
+    g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);
+    
+    for (int i = 0; i<3; i++){
+        g_walls[i].setColor(0.0,0.6,0.0);
+    }
+    
+    g_walls[0].setCenter(0.0,0.0,-7.5);
+    g_walls[1].setCenter(0.0,0.0,7.5);
+    g_walls[2].setCenter(10.0,0.0,0.0);
+    
 }

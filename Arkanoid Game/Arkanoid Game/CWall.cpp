@@ -4,12 +4,14 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+#define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
 
+#include <GLUT/glut.h>
+#include <iostream>
 #include "CWall.hpp"
 #include "sources.hpp"
-
+using namespace std;
 CWall::CWall(float w, float h, float d)
 {
     width=w; height=h; depth=d;
@@ -53,6 +55,28 @@ void CWall::setColor(float r, float g, float b)
     color_r=r; color_g=g; color_b=b;
 }
 
+
+//    g_walls[0].setCenter(0.0,0.0,-7.5);
+//    g_walls[1].setCenter(0.0,0.0,7.5);
+//    g_walls[2].setCenter(10.0,0.0,0.0);
+//    CWall g_wall(20,0.2,15);
+    bool CWall::hasIntersected(CSphere& ball) {
+        if (ball.center_x <= (-7.5 + SPHERE_RADIUS) || ball.center_x >= (7.5 - SPHERE_RADIUS)  || ball.center_y >= (10 - SPHERE_RADIUS)) {
+            cout << ">>>>hasIntersected TRUE"<< endl;
+            return true;
+        }
+        cout << ">>>>hasIntersected FALSE"<< endl;
+        return false;
+    }
+    
+    // check if there is collision between a sphere and a wall
+    
+    //    void CWall::hitBy(CSphere& ball) {
+    //        ball.dir_x = {닿은 지점 x} - ball.center_x;
+    //        ball.dir_y = g_wall.center_y - ball.center_y;
+    //        ball.dir_z = g_wall.center_z - ball.center_z;
+    //    } // what needs to be done if there is collision between a sphere and a wall
+
 void CWall::draw()
 {
     glLoadIdentity();
@@ -83,4 +107,3 @@ void CWall::draw()
         glEnd () ;
     }
 }
-

@@ -6,7 +6,7 @@
 //
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
-
+#include <math.h>
 #include "CSphere.hpp"
 #include "sources.hpp"
 
@@ -43,3 +43,18 @@ void CSphere::draw()
     glColor3f(color_r, color_g, color_b);
     glutSolidSphere(0.5,20,16);
 }
+
+bool CSphere::hasIntersected(CSphere& ball) {
+    float distance= pow(pow(this->center_x - ball.center_x,2) + pow(this->center_y - ball.center_y,2),1/2);
+    if (distance == 1) {
+        return true;
+    }
+    return false;
+    // 본인 중심 & 가까운 공의 중심 거리가 지름이랑 같으면 true. 아니면 false
+} // check if there is collision between two spheres
+
+void CSphere::hitBy(CSphere& ball) {
+    this->dir_x = this->center_x - ball.center_x;
+    this->dir_y = this->center_y - ball.center_y;
+    this->dir_z = this->center_z - ball.center_z;
+} // what needs to be done if there is collision between two spheres.
