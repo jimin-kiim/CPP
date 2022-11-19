@@ -7,9 +7,12 @@
 #define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
+
+#include <iostream>
 #include <math.h>
 #include "CSphere.hpp"
 #include "sources.hpp"
+using namespace std;
 
 CSphere:: CSphere()
 {
@@ -45,10 +48,11 @@ void CSphere::draw()
     glutSolidSphere(0.5,20,16);
 }
 
-bool CSphere::hasIntersected(CSphere& ball) {
-    float distance= sqrt(pow(center_x - ball.center_x,2) + pow(center_y - ball.center_y,2));
+bool CSphere::hasIntersected(CSphere& ball, int i ) {
+    float distance= sqrt(pow(center_x - ball.center_x, 2) + pow(center_z - ball.center_z, 2));
     
-    if (distance <= 2*SPHERE_RADIUS) {
+    if (distance <= 2 *SPHERE_RADIUS) {
+        cout << i << distance <<endl;
         return true;
     }
     return false;
@@ -58,7 +62,6 @@ bool CSphere::hasIntersected(CSphere& ball) {
 void CSphere::hitBy(CSphere& ball) {
     dir_x = center_x - ball.center_x;
     dir_y = center_y - ball.center_y;
-    dir_z = center_z - ball.center_z;
 } // what needs to be done if there is collision between two spheres.
 
 // 사용자 공, 움직일 공.

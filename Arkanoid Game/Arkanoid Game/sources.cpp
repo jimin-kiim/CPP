@@ -228,14 +228,29 @@ void InitGL() {
     glutMouseFunc(MouseCallback);
     glutMotionFunc(MotionCallback);
 }
+//CSphere g_user;
+//CSphere g_shooting_ball;
+//CSphere g_sphere[45];
+//CWall g_wall(20,0.2,15); // w, h, d
+//CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
 
 void detectCollision(){
 //    cout << "detectCollision";
-    for (int i = 1; i<3; i++){
-        bool has_intersected = g_shooting_ball.hasIntersected(g_sphere[i]);
-//        cout << has_intersected << endl;
+    for (int i = 0; i<3; i++){
+        bool has_intersected = g_shooting_ball.hasIntersected(g_sphere[i] ,i);
         if(has_intersected) g_shooting_ball.hitBy(g_sphere[i]);
     }
+    
+    for (int i = 1; i<3; i++){
+        bool has_intersected = g_walls[i].hasIntersected(g_shooting_ball);
+//        cout << has_intersected << endl;
+        if(has_intersected) g_walls[i].hitBy(g_shooting_ball);
+    }
+    
+    if (g_shooting_ball.hasIntersected(g_user, 10)) {
+        g_shooting_ball.hitBy(g_user);
+    }
+    
 }
 
 void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
@@ -279,7 +294,7 @@ void InitObjects()
 {
     g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(-10.0+SPHERE_RADIUS, 0.0, 0.0);
     g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(-10.0+ 3*SPHERE_RADIUS, 0.0, 0.0);
-    g_sphere[0].setColor(0.8, 0.2, 0.2); g_sphere[0].setCenter(0.0, 0.0, 0.0);
+    g_sphere[0].setColor(0.8, 0.2, 0.2); g_sphere[0].setCenter(-6.0, 0.0, -2.0);
     g_sphere[1].setColor(0.2, 0.8, 0.2); g_sphere[1].setCenter(1.0, 0.0, 0.0);
     g_sphere[2].setColor(0.2, 0.2, 0.8); g_sphere[2].setCenter(0.0, 0.0, 1.0);
     

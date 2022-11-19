@@ -25,7 +25,7 @@ public :
     void init();
     void setCenter(float x, float y, float z);
     void setColor(float r, float g, float b);
-    bool hasIntersected(CSphere& ball);
+    bool hasIntersected(CSphere& ball, int i);
     void hitBy(CSphere& ball);
     void draw();
 };
