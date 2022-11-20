@@ -238,7 +238,10 @@ void detectCollision(){
 //    cout << "detectCollision";
     for (int i = 0; i<3; i++){
         bool has_intersected = g_shooting_ball.hasIntersected(g_sphere[i] ,i);
-        if(has_intersected) g_shooting_ball.hitBy(g_sphere[i]);
+        if(has_intersected) {
+            g_shooting_ball.hitBy(g_sphere[i]);
+            g_sphere[i].center_x = -999;
+        }
     }
     
     for (int i = 1; i<3; i++){
