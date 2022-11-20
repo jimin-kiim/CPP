@@ -19,12 +19,12 @@ CSphere g_user;
 CSphere g_shooting_ball;
 CSphere g_sphere[50];
 CWall g_wall(15,0.2,20); // w, h, d // x, y z
-CWall g_walls[3] = {CWall(0.2,5,20),CWall(0.2,5,20),CWall(15,5,0.2)};
+CWall g_walls[3] = {CWall(0.2,1,20), CWall(0.2,1,20), CWall(15,1,0.2)};
 
-const int NO_SPHERE=50;
-const int WALL_ID=1000;
-int rotate_x=0, rotate_y=0;
-int choice=1;
+const int NO_SPHERE = 50;
+const int WALL_ID = 1000;
+int rotate_x = 0, rotate_y = 0;
+int choice = 1;
 
 GLfloat BoxVerts[][3] = {
     {-1.0,-1.0,-1.0},
@@ -57,17 +57,17 @@ int cubeIndices[][4] = {
 
 /* Viewer state */
 float sdepth = 10;
-float zNear=1.0, zFar=100.0;
+float zNear = 1.0, zFar = 100.0;
 float aspect = 5.0/4.0;
 float xcam = 0, ycam = 0;
 long xsize, ysize;
 int downX, downY;
 bool leftButton = false, middleButton = false, rightButton = false;
 int i,j;
-GLfloat light0Position[] = { 0, 1, 0, 1.0};
+GLfloat light0Position[] = { 0, 15, -10, 1.0};
 int displayMenu, mainMenu;
-int space_flag=0;
-int currentTime, previousTime=-1;
+int space_flag = 0;
+int currentTime, previousTime = -1;
 
 void ReshapeCallback(int width, int height)
 {
@@ -78,7 +78,7 @@ void ReshapeCallback(int width, int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(64.0, aspect, zNear, zFar);
-    gluLookAt(0,15,10, 0,5,0, 0,1,0);
+    gluLookAt(0,25,10, 0,0,-8, 0,1,0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glutPostRedisplay();
@@ -90,23 +90,18 @@ void DisplayCallback(void)
     glMatrixMode(GL_MODELVIEW);
     g_user.draw();
     g_shooting_ball.draw();
-    for (i=0;i<NO_SPHERE;i++) g_sphere[i].draw();
-    for (i=0;i<3;i++) g_walls[i].draw();
+    for (i=0; i<NO_SPHERE; i++) g_sphere[i].draw();
+    for (i=0; i<3; i++) g_walls[i].draw();
     g_wall.draw();
     glutSwapBuffers();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-//CSphere g_user;
-//CSphere g_shooting_ball;
 void KeyboardCallback(unsigned char ch, int x, int y)
 {
     switch (ch)
     {
-        case '1' :
-            cout << "<<<<case1" << endl;
-            choice=1;
-            break;
+        case '1' : choice=1; break;
         case '2' : choice=2; break;
         case '3' : choice=3; break;
             
@@ -120,26 +115,26 @@ void KeyboardCallback(unsigned char ch, int x, int y)
             }
             break;
             
-//        case 37 :  // LEFT ARROW
-//            cout << "<<<<case37" << endl;
-//            if (space_flag){// 게임 시작했으면
-//                g_user.center_x -= 1.0;
-//            }
-//            else {// 게임 시작 전
-//                g_user.center_x -= 1.0;
-//                g_shooting_ball.center_x -= 1.0;
-//            }
-//            break;
-//
-//        case 39 :
-//            if (space_flag){// 게임 시작했으면
-//                g_user.center_x += 1.0;
-//            }
-//            else {// 게임 시작 전
-//                g_user.center_x += 1.0;
-//                g_shooting_ball.center_x += 1.0;
-//            }
-//            break; // RIGHT ARROW
+            //        case 37 :  // LEFT ARROW
+            //            cout << "<<<<case37" << endl;
+            //            if (space_flag){// 게임 시작했으면
+            //                g_user.center_x -= 1.0;
+            //            }
+            //            else {// 게임 시작 전
+            //                g_user.center_x -= 1.0;
+            //                g_shooting_ball.center_x -= 1.0;
+            //            }
+            //            break;
+            //
+            //        case 39 :
+            //            if (space_flag){// 게임 시작했으면
+            //                g_user.center_x += 1.0;
+            //            }
+            //            else {// 게임 시작 전
+            //                g_user.center_x += 1.0;
+            //                g_shooting_ball.center_x += 1.0;
+            //            }
+            //            break; // RIGHT ARROW
             
         case 27:
             exit(0);
@@ -157,9 +152,6 @@ void MouseCallback(int button, int state, int x, int y)
     glutPostRedisplay();
 }
 
-//CSPhere g_user;
-//CSPhere g_shooting_ball;
-
 void rotate(int id)
 {
     glMatrixMode(GL_MODELVIEW);
@@ -169,13 +161,13 @@ void rotate(int id)
     glRotated(((double)rotate_y), 1.0, 0.0, 0.0);
     glRotated(((double)rotate_x), 0.0, 1.0, 0.0);
     
-    if (id<NO_SPHERE) {
+    if (id < NO_SPHERE) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_sphere[id].m_mRotate);
         glGetDoublev(GL_MODELVIEW_MATRIX, g_user.m_mRotate);
         glGetDoublev(GL_MODELVIEW_MATRIX, g_shooting_ball.m_mRotate);
     }
     
-    if (id==WALL_ID) {
+    if (id == WALL_ID) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_wall.m_mRotate);
         glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[0].m_mRotate);
         glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[1].m_mRotate);
@@ -185,33 +177,28 @@ void rotate(int id)
 }
 
 void MotionCallback(int x, int y) {
-    int tdx=x-downX,tdy=0,tdz=y-downY,id=choice-1;
+    int tdx = x - downX;
     if (rightButton) {
         rotate_x += x-downX;
         rotate_y += y-downY;
-        for (i=0;i<NO_SPHERE;i++) rotate(i);
+        for (i=0; i<NO_SPHERE; i++) rotate(i);
         rotate(WALL_ID);
     } else if (leftButton) {
         if (space_flag){// 게임 시작했으면
-            g_user.center_x =  g_user.center_x+tdx/50.0;
-//            g_user.setCenter(, g_user.center_y, g_user.center_z);
+            g_user.center_x = g_user.center_x + tdx/50.0;
         }
         else {// 게임 시작 전
-            g_user.center_x =  g_user.center_x+tdx/50.0;
-//            g_user.setCenter(g_user.center_x+tdx/50.0, g_user.center_y, g_user.center_z);
-            g_shooting_ball.center_x =  g_shooting_ball.center_x+tdx/50.0;
-//            g_shooting_ball.setCenter(g_shooting_ball.center_x+tdx/50.0, g_shooting_ball.center_y, g_shooting_ball.center_z);
+            g_user.center_x = g_user.center_x + tdx/50.0;
+            g_shooting_ball.center_x = g_shooting_ball.center_x + tdx/50.0;
         }
-      
     }
     downX = x;   downY = y;
     glutPostRedisplay();
 }
-//CSPhere g_user;
-//CSPhere g_shooting_ball;
+
 void initRotate() {
-    for (i=0;i<NO_SPHERE;i++) g_sphere[i].init();
-    for (i=0;i<3;i++) g_walls[i].init();
+    for (i=0; i<NO_SPHERE; i++) g_sphere[i].init();
+    for (i=0; i<3; i++) g_walls[i].init();
     g_wall.init();
     g_user.init();
     g_shooting_ball.init();
@@ -245,15 +232,9 @@ void InitGL() {
     glutMouseFunc(MouseCallback);
     glutMotionFunc(MotionCallback);
 }
-//CSphere g_user;
-//CSphere g_shooting_ball;
-//CSphere g_sphere[45];
-//CWall g_wall(20,0.2,15); // w, h, d
-//CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
 
 void detectCollision(){
-//    cout << "detectCollision";
-    for (int i = 0; i<49; i++){
+    for (int i = 0; i<NO_SPHERE; i++){
         bool has_intersected = g_shooting_ball.hasIntersected(g_sphere[i] ,i);
         if(has_intersected) {
             g_shooting_ball.hitBy(g_sphere[i]);
@@ -261,16 +242,14 @@ void detectCollision(){
         }
     }
     
-    for (int i = 1; i<49; i++){
+    for (int i = 1; i<NO_SPHERE; i++){
         bool has_intersected = g_walls[i].hasIntersected(g_shooting_ball);
-//        cout << has_intersected << endl;
         if(has_intersected) g_walls[i].hitBy(g_shooting_ball);
     }
     
     if (g_shooting_ball.hasIntersected(g_user, 10)) {
         g_shooting_ball.hitBy(g_user);
     }
-    
 }
 
 bool detectFalling(){
@@ -281,28 +260,24 @@ bool detectFalling(){
 }
 
 void restartGame(){
-//    g_user.setCenter(0.0, 0.0, 10.0-SPHERE_RADIUS);
     g_shooting_ball.setCenter(g_user.center_x, 0.0, g_user.center_z - SPHERE_RADIUS);
-    space_flag=0;
+    space_flag = 0;
 }
 
-void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
-void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
-void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
+void MyIdleFunc(void) { glutPostRedisplay(); } /* things to do while idle */
+void RunIdleFunc(void) { glutIdleFunc(MyIdleFunc); }
+void PauseIdleFunc(void) { glutIdleFunc(NULL); }
 
-
-//CSPhere g_user;
-//CSPhere g_shooting_ball;
 void renderScene()
 {
     int timeDelta;
     currentTime = glutGet(GLUT_ELAPSED_TIME);
-    if (previousTime==-1) timeDelta=0;
+    if (previousTime == -1) timeDelta = 0;
     else timeDelta = currentTime - previousTime;
-    float x=g_shooting_ball.center_x;
-    float y=g_shooting_ball.center_y;
-    float z=g_shooting_ball.center_z;
-    //    cout << x << endl;
+    float x = g_shooting_ball.center_x;
+    float y = g_shooting_ball.center_y;
+    float z = g_shooting_ball.center_z;
+    
     detectCollision();
     if (detectFalling()){
         restartGame();
@@ -319,12 +294,10 @@ void renderScene()
     
 }
 
-//CSPhere g_user;
-//CSPhere g_shooting_ball;
 void InitObjects()
 {
-    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, 10.0-SPHERE_RADIUS);
-    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, 10.0- 3*SPHERE_RADIUS);
+    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, 10.0 - SPHERE_RADIUS);
+    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, 10.0 - 3 * SPHERE_RADIUS);
     
     g_sphere[0].setCenter(-2.0, 0.0, -2.0);
     g_sphere[48].setCenter(-1.0, 0.0, -1.0);
@@ -362,7 +335,6 @@ void InitObjects()
     g_sphere[25].setCenter(3.0, 0.0, -5.0);
     g_sphere[26].setCenter(4.0, 0.0, -4.0);
     
-    
     g_sphere[29].setCenter(0.0, 0.0, 1.0);
     g_sphere[30].setCenter(0.0, 0.0, 2.0);
     g_sphere[27].setCenter(-5.0, 0.0, -6.0);
@@ -391,7 +363,7 @@ void InitObjects()
     for (int i = 0; i<3; i++){
         g_walls[i].setColor(0.0,0.0,0.0);
     }
-    for (int i = 0; i<50; i++){
+    for (int i = 0; i<NO_SPHERE; i++){
         g_sphere[i].setColor(0.7, 0.7, 0.1);
     }
     

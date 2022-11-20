@@ -55,16 +55,9 @@ bool CSphere::hasIntersected(CSphere& ball, int i ) {
         return true;
     }
     return false;
-    // 공의 중심 거리가 지름이랑 같으면 true. 아니면 false
-} // check if there is collision between two spheres
+} 
 
 void CSphere::hitBy(CSphere& ball) {
     dir_x = center_x - ball.center_x;
     dir_z = center_z - ball.center_z;
-} // what needs to be done if there is collision between two spheres.
-
-// 사용자 공, 움직일 공.
-// 사용자 공과의 반대 방향으로 움직일 공이 날아감.
-// 사용자 공의 이동은
-// 밖으로 나가면 다시 사용자 공 위로
-// 
+}

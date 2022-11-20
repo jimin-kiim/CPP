@@ -13,9 +13,9 @@
 class CSphere
 {
 public:
-    float center_x, center_y, center_z;
+    float center_x, center_y, center_z; // 현재 위치
     float color_r,color_g,color_b;
-    float dir_x,dir_y,dir_z;
+    float dir_x,dir_y,dir_z; // 속도
     float speed;
 
 public :
