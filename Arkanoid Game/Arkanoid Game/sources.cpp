@@ -111,7 +111,7 @@ void KeyboardCallback(unsigned char ch, int x, int y)
         case '3' : choice=3; break;
             
         case 32 :
-            if (space_flag) space_flag=0;
+            if (space_flag) break;
             else {
                 space_flag=1;
 //                g_shooting_ball.dir_x = g_user.center_x - g_shooting_ball.center_x;
