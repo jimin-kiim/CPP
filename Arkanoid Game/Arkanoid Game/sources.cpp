@@ -18,8 +18,8 @@ using namespace std;
 CSphere g_user;
 CSphere g_shooting_ball;
 CSphere g_sphere[45];
-CWall g_wall(20,0.2,15); // w, h, d
-CWall g_walls[3] = {CWall(20,5,0.2),CWall(20,5,0.2),CWall(0.2,5,15)};
+CWall g_wall(15,0.2,20); // w, h, d // x, y z
+CWall g_walls[3] = {CWall(0.2,5,20),CWall(0.2,5,20),CWall(15,5,0.2)};
 
 const int NO_SPHERE=3;
 const int WALL_ID=1000;
@@ -295,11 +295,11 @@ void renderScene()
 //CSPhere g_shooting_ball;
 void InitObjects()
 {
-    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(-10.0+SPHERE_RADIUS, 0.0, 0.0);
-    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(-10.0+ 3*SPHERE_RADIUS, 0.0, 0.0);
-    g_sphere[0].setColor(0.8, 0.2, 0.2); g_sphere[0].setCenter(-6.0, 0.0, -2.0);
-    g_sphere[1].setColor(0.2, 0.8, 0.2); g_sphere[1].setCenter(1.0, 0.0, 0.0);
-    g_sphere[2].setColor(0.2, 0.2, 0.8); g_sphere[2].setCenter(0.0, 0.0, 1.0);
+    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, 10.0-SPHERE_RADIUS);
+    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, 10.0- 3*SPHERE_RADIUS);
+    g_sphere[0].setColor(0.8, 0.2, 0.2); g_sphere[0].setCenter(-2.0, 0.0, 6.0);
+    g_sphere[1].setColor(0.2, 0.8, 0.2); g_sphere[1].setCenter(0.0, 0.0, -1.0);
+    g_sphere[2].setColor(0.2, 0.2, 0.8); g_sphere[2].setCenter(1.0, 0.0, 0.0);
     
     // specify initial colors and center positions of a wall
     g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);
@@ -308,8 +308,7 @@ void InitObjects()
         g_walls[i].setColor(0.0,0.6,0.0);
     }
     
-    g_walls[0].setCenter(0.0,0.0,-7.5);
-    g_walls[1].setCenter(0.0,0.0,7.5);
-    g_walls[2].setCenter(10.0,0.0,0.0);
-    
+    g_walls[0].setCenter(-7.5,0.0,0.0);
+    g_walls[1].setCenter(7.5,0.0,0.0);
+    g_walls[2].setCenter(0.0,0.0,-10.0);
 }
