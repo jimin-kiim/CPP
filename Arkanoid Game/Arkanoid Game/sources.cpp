@@ -288,73 +288,73 @@ void InitObjects()
     g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, 10.0-SPHERE_RADIUS);
     g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, 10.0- 3*SPHERE_RADIUS);
     
-    g_sphere[0].setColor(0.8, 0.2, 0.2); g_sphere[0].setCenter(-2.0, 0.0, -2.0);
-    g_sphere[48].setColor(0.8, 0.2, 0.8); g_sphere[48].setCenter(-1.0, 0.0, -1.0);
-    g_sphere[28].setColor(0.3, 0.2, 0.8); g_sphere[28].setCenter(-3.0, 0.0, -1.0);
+    g_sphere[0].setCenter(-2.0, 0.0, -2.0);
+    g_sphere[48].setCenter(-1.0, 0.0, -1.0);
+    g_sphere[28].setCenter(-3.0, 0.0, -1.0);
     
-    g_sphere[8].setColor(0.9, 0.3, 0.8); g_sphere[8].setCenter(2.0, 0.0, -2.0);
-    g_sphere[49].setColor(0.8, 0.2, 0.8); g_sphere[49].setCenter(1.0, 0.0, -1.0);
-    g_sphere[47].setColor(0.8, 0.6, 0.8); g_sphere[47].setCenter(3.0, 0.0, -1.0);
+    g_sphere[8].setCenter(2.0, 0.0, -2.0);
+    g_sphere[49].setCenter(1.0, 0.0, -1.0);
+    g_sphere[47].setCenter(3.0, 0.0, -1.0);
     
-    g_sphere[1].setColor(0.2, 0.8, 0.2); g_sphere[1].setCenter(-3.0, 0.0, 6.0);
-    g_sphere[2].setColor(0.2, 0.2, 0.8); g_sphere[2].setCenter(-2.0, 0.0, 6.0);
-    g_sphere[3].setColor(0.4, 0.5, 0.8); g_sphere[3].setCenter(-1.0, 0.0, 6.0);
-    g_sphere[4].setColor(0.3, 0.2, 0.8); g_sphere[4].setCenter(0.0, 0.0, 6.0);
-    g_sphere[5].setColor(0.7, 0.3, 0.8); g_sphere[5].setCenter(1.0, 0.0, 6.0);
-    g_sphere[6].setColor(0.5, 0.7, 0.8); g_sphere[6].setCenter(2.0, 0.0, 6.0);
-    g_sphere[7].setColor(0.6, 0.9, 0.8); g_sphere[7].setCenter(3.0, 0.0, 6.0);
+    g_sphere[1].setCenter(-3.0, 0.0, 6.0);
+    g_sphere[2].setCenter(-2.0, 0.0, 6.0);
+    g_sphere[3].setCenter(-1.0, 0.0, 6.0);
+    g_sphere[4].setCenter(0.0, 0.0, 6.0);
+    g_sphere[5].setCenter(1.0, 0.0, 6.0);
+    g_sphere[6].setCenter(2.0, 0.0, 6.0);
+    g_sphere[7].setCenter(3.0, 0.0, 6.0);
     
-    g_sphere[9].setColor(0.2, 0.2, 0.8); g_sphere[9].setCenter(-4.0, 0.0, 5.0);
-    g_sphere[10].setColor(0.3, 0.2, 0.5); g_sphere[10].setCenter(-5.0, 0.0, 4.0);
-    g_sphere[11].setColor(0.3, 0.5, 0.2); g_sphere[11].setCenter(-5.0, 0.0, 3.0);
-    g_sphere[12].setColor(0.3, 0.2, 0.4); g_sphere[12].setCenter(-5.0, 0.0, 2.0);
-    g_sphere[13].setColor(0.5, 0.7, 0.7); g_sphere[13].setCenter(-5.0, 0.0, 1.0);
-    g_sphere[14].setColor(0.6, 0.2, 0.7); g_sphere[14].setCenter(-5.0, 0.0, 0.0);
-    g_sphere[15].setColor(0.7, 0.7, 0.4); g_sphere[15].setCenter(-5.0, 0.0, -1.0);
-    g_sphere[16].setColor(0.8, 0.8, 0.5); g_sphere[16].setCenter(-5.0, 0.0, -2.0);
-    g_sphere[17].setColor(0.9, 0.1, 0.1); g_sphere[17].setCenter(-5.0, 0.0, -3.0);
+    g_sphere[9].setCenter(-4.0, 0.0, 5.0);
+    g_sphere[10].setCenter(-5.0, 0.0, 4.0);
+    g_sphere[11].setCenter(-5.0, 0.0, 3.0);
+    g_sphere[12].setCenter(-5.0, 0.0, 2.0);
+    g_sphere[13].setCenter(-5.0, 0.0, 1.0);
+    g_sphere[14].setCenter(-5.0, 0.0, 0.0);
+    g_sphere[15].setCenter(-5.0, 0.0, -1.0);
+    g_sphere[16].setCenter(-5.0, 0.0, -2.0);
+    g_sphere[17].setCenter(-5.0, 0.0, -3.0);
     
-    g_sphere[18].setColor(0.7, 0.9, 0.8); g_sphere[18].setCenter(-4.0, 0.0, -4.0);
-    g_sphere[19].setColor(0.6, 0.4, 0.3); g_sphere[19].setCenter(-3.0, 0.0, -5.0);
-    g_sphere[20].setColor(0.5, 0.6, 0.7); g_sphere[20].setCenter(-2.0, 0.0, -5.0);
-    g_sphere[21].setColor(0.2, 0.5, 0.8); g_sphere[21].setCenter(-1.0, 0.0, -5.0);
-    g_sphere[22].setColor(0.3, 0.2, 0.8); g_sphere[22].setCenter(0.0, 0.0, -5.0);
-    g_sphere[23].setColor(0.8, 0.3, 0.8); g_sphere[23].setCenter(1.0, 0.0, -5.0);
-    g_sphere[24].setColor(0.6, 0.9, 0.8); g_sphere[24].setCenter(2.0, 0.0, -5.0);
-    g_sphere[25].setColor(0.1, 0.2, 0.8); g_sphere[25].setCenter(3.0, 0.0, -5.0);
-    g_sphere[26].setColor(0.5, 0.2, 0.8); g_sphere[26].setCenter(4.0, 0.0, -4.0);
-    
-    
-    g_sphere[29].setColor(0.3, 0.2, 0.8); g_sphere[29].setCenter(0.0, 0.0, 1.0);
-    g_sphere[30].setColor(0.2, 0.2, 0.8); g_sphere[30].setCenter(0.0, 0.0, 2.0);
-    g_sphere[27].setColor(0.4, 0.2, 0.8); g_sphere[27].setCenter(-5.0, 0.0, -6.0);
-    
-    g_sphere[31].setColor(0.9, 0.2, 0.8); g_sphere[31].setCenter(5.0, 0.0, -3.0);
-    g_sphere[32].setColor(0.8, 0.2, 0.8); g_sphere[32].setCenter(5.0, 0.0, -2.0);
-    g_sphere[33].setColor(0.6, 0.2, 0.8); g_sphere[33].setCenter(5.0, 0.0, -1.0);
-    g_sphere[34].setColor(0.7, 0.2, 0.8); g_sphere[34].setCenter(5.0, 0.0, 0.0);
-    g_sphere[35].setColor(0.2, 0.5, 0.8); g_sphere[35].setCenter(5.0, 0.0, 1.0);
-    g_sphere[36].setColor(0.1, 0.2, 0.8); g_sphere[36].setCenter(5.0, 0.0, 2.0);
-    g_sphere[37].setColor(0.5, 0.7, 0.8); g_sphere[37].setCenter(5.0, 0.0, 3.0);
-    g_sphere[38].setColor(0.6, 0.8, 0.8); g_sphere[38].setCenter(5.0, 0.0, 4.0);
-    g_sphere[39].setColor(0.2, 0.2, 0.8); g_sphere[39].setCenter(4.0, 0.0, 5.0);
-    
-    g_sphere[40].setColor(0.2, 0.6, 0.8); g_sphere[40].setCenter(-3.0, 0.0, 3.0);
-    g_sphere[41].setColor(0.4, 0.4, 0.8); g_sphere[41].setCenter(-2.0, 0.0, 4.0);
-    g_sphere[42].setColor(0.2, 0.9, 0.8); g_sphere[42].setCenter(-1.0, 0.0, 4.0);
-    g_sphere[43].setColor(0.6, 0.2, 0.8); g_sphere[43].setCenter(0.0, 0.0, 4.0);
-    g_sphere[44].setColor(0.7, 0.1, 0.8); g_sphere[44].setCenter(1.0, 0.0, 4.0);
-    g_sphere[45].setColor(0.8, 0.4, 0.8); g_sphere[45].setCenter(2.0, 0.0, 4.0);
-    g_sphere[46].setColor(0.8, 0.7, 0.8); g_sphere[46].setCenter(3.0, 0.0, 3.0);
+    g_sphere[18].setCenter(-4.0, 0.0, -4.0);
+    g_sphere[19].setCenter(-3.0, 0.0, -5.0);
+    g_sphere[20].setCenter(-2.0, 0.0, -5.0);
+    g_sphere[21].setCenter(-1.0, 0.0, -5.0);
+    g_sphere[22].setCenter(0.0, 0.0, -5.0);
+    g_sphere[23].setCenter(1.0, 0.0, -5.0);
+    g_sphere[24].setCenter(2.0, 0.0, -5.0);
+    g_sphere[25].setCenter(3.0, 0.0, -5.0);
+    g_sphere[26].setCenter(4.0, 0.0, -4.0);
     
     
+    g_sphere[29].setCenter(0.0, 0.0, 1.0);
+    g_sphere[30].setCenter(0.0, 0.0, 2.0);
+    g_sphere[27].setCenter(-5.0, 0.0, -6.0);
     
+    g_sphere[31].setCenter(5.0, 0.0, -3.0);
+    g_sphere[32].setCenter(5.0, 0.0, -2.0);
+    g_sphere[33].setCenter(5.0, 0.0, -1.0);
+    g_sphere[34].setCenter(5.0, 0.0, 0.0);
+    g_sphere[35].setCenter(5.0, 0.0, 1.0);
+    g_sphere[36].setCenter(5.0, 0.0, 2.0);
+    g_sphere[37].setCenter(5.0, 0.0, 3.0);
+    g_sphere[38].setCenter(5.0, 0.0, 4.0);
+    g_sphere[39].setCenter(4.0, 0.0, 5.0);
+    
+    g_sphere[40].setCenter(-3.0, 0.0, 3.0);
+    g_sphere[41].setCenter(-2.0, 0.0, 4.0);
+    g_sphere[42].setCenter(-1.0, 0.0, 4.0);
+    g_sphere[43].setCenter(0.0, 0.0, 4.0);
+    g_sphere[44].setCenter(1.0, 0.0, 4.0);
+    g_sphere[45].setCenter(2.0, 0.0, 4.0);
+    g_sphere[46].setCenter(3.0, 0.0, 3.0);
     
     // specify initial colors and center positions of a wall
     g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);
     
     for (int i = 0; i<3; i++){
-        g_walls[i].setColor(0.0,0.6,0.0);
+        g_walls[i].setColor(0.0,0.0,0.0);
+    }
+    for (int i = 0; i<50; i++){
+        g_sphere[i].setColor(0.7, 0.7, 0.1);
     }
     
     g_walls[0].setCenter(-7.5,0.0,0.0);
