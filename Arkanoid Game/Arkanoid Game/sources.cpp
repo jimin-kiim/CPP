@@ -110,25 +110,36 @@ void KeyboardCallback(unsigned char ch, int x, int y)
         case '2' : choice=2; break;
         case '3' : choice=3; break;
             
-        case 32 :
-            if (space_flag) break;
+        case 32 : // SPACE_KEY
+            if (space_flag) break; // 게임 시작했으면
             else {
-                space_flag=1;
+                space_flag=1; // 게임 시작 전
                 g_shooting_ball.dir_x = g_shooting_ball.center_x - g_user.center_x;
                 g_shooting_ball.dir_y = g_shooting_ball.center_y - g_user.center_y;
                 g_shooting_ball.dir_z = g_shooting_ball.center_z - g_user.center_z;
             }
-            break; // SPACE_KEY
+            break;
             
-        case 37 :
-            g_user.center_x -= 1.0;
-            g_shooting_ball.center_x -= 1.0;
-            break; // LEFT ARROW
-            
-        case 39 :
-            g_user.center_x += 1.0;
-            g_shooting_ball.center_x += 1.0;
-            break; // RIGHT ARROW
+//        case 37 :  // LEFT ARROW
+//            cout << "<<<<case37" << endl;
+//            if (space_flag){// 게임 시작했으면
+//                g_user.center_x -= 1.0;
+//            }
+//            else {// 게임 시작 전
+//                g_user.center_x -= 1.0;
+//                g_shooting_ball.center_x -= 1.0;
+//            }
+//            break;
+//
+//        case 39 :
+//            if (space_flag){// 게임 시작했으면
+//                g_user.center_x += 1.0;
+//            }
+//            else {// 게임 시작 전
+//                g_user.center_x += 1.0;
+//                g_shooting_ball.center_x += 1.0;
+//            }
+//            break; // RIGHT ARROW
             
         case 27:
             exit(0);
@@ -175,13 +186,23 @@ void rotate(int id)
 
 void MotionCallback(int x, int y) {
     int tdx=x-downX,tdy=0,tdz=y-downY,id=choice-1;
-    if (leftButton) {
+    if (rightButton) {
         rotate_x += x-downX;
         rotate_y += y-downY;
         for (i=0;i<NO_SPHERE;i++) rotate(i);
         rotate(WALL_ID);
-    } else if (rightButton) {
-        if (id<NO_SPHERE) g_sphere[id].setCenter(g_sphere[id].center_x+tdx/100.0,g_sphere[id].center_y+tdy/100.0,g_sphere[id].center_z+tdz/100.0);
+    } else if (leftButton) {
+        if (space_flag){// 게임 시작했으면
+            g_user.center_x =  g_user.center_x+tdx/50.0;
+//            g_user.setCenter(, g_user.center_y, g_user.center_z);
+        }
+        else {// 게임 시작 전
+            g_user.center_x =  g_user.center_x+tdx/50.0;
+//            g_user.setCenter(g_user.center_x+tdx/50.0, g_user.center_y, g_user.center_z);
+            g_shooting_ball.center_x =  g_shooting_ball.center_x+tdx/50.0;
+//            g_shooting_ball.setCenter(g_shooting_ball.center_x+tdx/50.0, g_shooting_ball.center_y, g_shooting_ball.center_z);
+        }
+      
     }
     downX = x;   downY = y;
     glutPostRedisplay();
