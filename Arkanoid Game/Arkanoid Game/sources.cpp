@@ -273,6 +273,19 @@ void detectCollision(){
     
 }
 
+bool detectFalling(){
+    if (g_shooting_ball.center_z >= 10 - SPHERE_RADIUS){
+        return true;
+    }
+    return false;
+}
+
+void restartGame(){
+//    g_user.setCenter(0.0, 0.0, 10.0-SPHERE_RADIUS);
+    g_shooting_ball.setCenter(g_user.center_x, 0.0, g_user.center_z - SPHERE_RADIUS);
+    space_flag=0;
+}
+
 void MyIdleFunc(void) { glutPostRedisplay();} /* things to do while idle */
 void RunIdleFunc(void) {   glutIdleFunc(MyIdleFunc); }
 void PauseIdleFunc(void) {   glutIdleFunc(NULL); }
@@ -289,14 +302,18 @@ void renderScene()
     float x=g_shooting_ball.center_x;
     float y=g_shooting_ball.center_y;
     float z=g_shooting_ball.center_z;
-//    cout << x << endl;
+    //    cout << x << endl;
     detectCollision();
-    if (space_flag) {
-        g_shooting_ball.setCenter(x+timeDelta*0.002*g_shooting_ball.dir_x,
-                              y+timeDelta*0.002*g_shooting_ball.dir_y,
-                              z+timeDelta*0.002*g_shooting_ball.dir_z);
+    if (detectFalling()){
+        restartGame();
+    }else{
+        if (space_flag) {
+            g_shooting_ball.setCenter(x+timeDelta*0.005*g_shooting_ball.dir_x,
+                                      y+timeDelta*0.005*g_shooting_ball.dir_y,
+                                      z+timeDelta*0.005*g_shooting_ball.dir_z);
+        }
     }
-        
+    
     glutPostRedisplay();
     previousTime=currentTime;
     
