@@ -20,11 +20,13 @@ CSphere g_shooting_ball;
 CSphere g_sphere[50];
 CWall g_wall(15,0.2,20); // w, h, d // x, y z
 CWall g_walls[3] = {CWall(0.2,1,20), CWall(0.2,1,20), CWall(15,1,0.2)};
+enum wallDirection {LEFT = 0, RIGHT, TOP};
 
 const int NO_SPHERE = 50;
 const int WALL_ID = 1000;
 int rotate_x = 0, rotate_y = 0;
 int choice = 1;
+int life = 3;
 
 GLfloat BoxVerts[][3] = {
     {-1.0,-1.0,-1.0},
@@ -185,11 +187,11 @@ void MotionCallback(int x, int y) {
         rotate(WALL_ID);
     } else if (leftButton) {
         if (space_flag){// 게임 시작했으면
-            g_user.center_x = g_user.center_x + tdx/50.0;
+            g_user.center_x = g_user.center_x + tdx/25.0;
         }
         else {// 게임 시작 전
-            g_user.center_x = g_user.center_x + tdx/50.0;
-            g_shooting_ball.center_x = g_shooting_ball.center_x + tdx/50.0;
+            g_user.center_x = g_user.center_x + tdx/25.0;
+            g_shooting_ball.center_x = g_shooting_ball.center_x + tdx/25.0;
         }
     }
     downX = x;   downY = y;
@@ -242,7 +244,7 @@ void detectCollision(){
         }
     }
     
-    for (int i = 1; i<NO_SPHERE; i++){
+    for (int i = 0; i<3; i++){
         bool has_intersected = g_walls[i].hasIntersected(g_shooting_ball);
         if(has_intersected) g_walls[i].hitBy(g_shooting_ball);
     }
@@ -367,7 +369,7 @@ void InitObjects()
         g_sphere[i].setColor(0.7, 0.7, 0.1);
     }
     
-    g_walls[0].setCenter(-7.5,0.0,0.0);
-    g_walls[1].setCenter(7.5,0.0,0.0);
-    g_walls[2].setCenter(0.0,0.0,-10.0);
+    g_walls[LEFT].setCenter(-7.5,0.0,0.0);
+    g_walls[RIGHT].setCenter(7.5,0.0,0.0);
+    g_walls[TOP].setCenter(0.0,0.0,-10.0);
 }

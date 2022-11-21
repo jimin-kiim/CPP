@@ -57,15 +57,23 @@ void CWall::setColor(float r, float g, float b)
 }
 
 bool CWall::hasIntersected(CSphere& ball) {
+    //    if (ball.center_z <= (-10.0 + SPHERE_RADIUS) || ball.center_x <= (-7.5 + SPHERE_RADIUS)  || ball.center_x >= (7.5 - SPHERE_RADIUS)) {
+    //        return true;
+    //    }
     if (ball.center_z <= (-10.0 + SPHERE_RADIUS) || ball.center_x <= (-7.5 + SPHERE_RADIUS)  || ball.center_x >= (7.5 - SPHERE_RADIUS)) {
         return true;
     }
+    
     return false;
 }
 
 void CWall::hitBy(CSphere& ball) {
-    ball.dir_x = -ball.dir_x;
-    ball.dir_z = -ball.dir_z;
+    
+    if (ball.center_z <= (-10.0 + SPHERE_RADIUS)){
+        ball.dir_z = -ball.dir_z;
+    }else  {
+        ball.dir_x = -ball.dir_x;
+    }
 } 
 
 void CWall::draw()
