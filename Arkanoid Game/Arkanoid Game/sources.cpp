@@ -18,9 +18,12 @@ using namespace std;
 CSphere g_user;
 CSphere g_shooting_ball;
 CSphere g_sphere[50];
-CWall g_wall(15,0.2,20); // w, h, d // x, y z
-CWall g_walls[3] = {CWall(0.2,1,20), CWall(0.2,1,20), CWall(15,1,0.2)};
+int FLOOR_WIDTH = 15;
+int FLOOR_HEIGHT = 20;
+CWall g_wall(FLOOR_WIDTH,0.2,FLOOR_HEIGHT); // w, h, d // x, y z
+CWall g_walls[3] = {CWall(0.2,1,FLOOR_HEIGHT), CWall(0.2,1,FLOOR_HEIGHT), CWall(FLOOR_WIDTH,1,0.2)};
 enum wallDirection {LEFT = 0, RIGHT, TOP};
+
 
 const int NO_SPHERE = 50;
 const int WALL_ID = 1000;
@@ -255,7 +258,7 @@ void detectCollision(){
 }
 
 bool detectFalling(){
-    if (g_shooting_ball.center_z >= 10 - SPHERE_RADIUS){
+    if (g_shooting_ball.center_z >= FLOOR_HEIGHT/2 - SPHERE_RADIUS){
         return true;
     }
     return false;
@@ -298,8 +301,8 @@ void renderScene()
 
 void InitObjects()
 {
-    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, 10.0 - SPHERE_RADIUS);
-    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, 10.0 - 3 * SPHERE_RADIUS);
+    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, FLOOR_HEIGHT/2 - SPHERE_RADIUS);
+    g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, FLOOR_HEIGHT/2 - 3 * SPHERE_RADIUS);
     
     g_sphere[0].setCenter(-2.0, 0.0, -2.0);
     g_sphere[48].setCenter(-1.0, 0.0, -1.0);
@@ -359,8 +362,7 @@ void InitObjects()
     g_sphere[45].setCenter(2.0, 0.0, 4.0);
     g_sphere[46].setCenter(3.0, 0.0, 3.0);
     
-    // specify initial colors and center positions of a wall
-    g_wall.setColor(0.0,0.6,0.0); g_wall.setCenter(0.0,-0.6,0.0);
+    g_wall.setColor(0.0, 0.6, 0.0); g_wall.setCenter(0.0, -0.6, 0.0);
     
     for (int i = 0; i<3; i++){
         g_walls[i].setColor(0.0,0.0,0.0);
@@ -369,7 +371,7 @@ void InitObjects()
         g_sphere[i].setColor(0.7, 0.7, 0.1);
     }
     
-    g_walls[LEFT].setCenter(-7.5,0.0,0.0);
-    g_walls[RIGHT].setCenter(7.5,0.0,0.0);
-    g_walls[TOP].setCenter(0.0,0.0,-10.0);
+    g_walls[LEFT].setCenter(-FLOOR_WIDTH/2, 0.0, 0.0);
+    g_walls[RIGHT].setCenter(FLOOR_WIDTH/2, 0.0, 0.0);
+    g_walls[TOP].setCenter(0.0, 0.0, -FLOOR_HEIGHT/2);
 }

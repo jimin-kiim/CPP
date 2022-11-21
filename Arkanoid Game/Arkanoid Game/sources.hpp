@@ -13,6 +13,9 @@
 #include "CSphere.hpp"
 #include "CWall.hpp"
 
+extern int FLOOR_WIDTH;
+extern int FLOOR_HEIGHT;
+
 //GLdouble rotMatrix[4][16];
 extern int rotate_x, rotate_y;
 extern int choice;
