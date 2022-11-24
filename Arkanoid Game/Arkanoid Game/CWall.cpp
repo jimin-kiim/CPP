@@ -4,11 +4,10 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
-#define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 
-#include <iostream>
+//#include <iostream>
 #include "CWall.hpp"
 #include "sources.hpp"
 using namespace std;

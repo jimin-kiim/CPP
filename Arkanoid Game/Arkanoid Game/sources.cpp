@@ -4,29 +4,30 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
-
-#define SPHERE_RADIUS 0.5
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <iostream>
+//#include <iostream>
 #include "sources.hpp"
 using namespace std;
 //GLdouble rotMatrix[4][16];
 
+const int FLOOR_WIDTH = 15;
+const int FLOOR_HEIGHT = 20;
+const float SPHERE_RADIUS = 0.5;
+const int NO_SPHERE = 50;
+const int WALL_ID = 1000;
+
+enum wallDirection {LEFT = 0, RIGHT, TOP};
+
 CSphere g_user;
 CSphere g_shooting_ball;
 CSphere g_sphere[50];
-int FLOOR_WIDTH = 15;
-int FLOOR_HEIGHT = 20;
-CWall g_wall(FLOOR_WIDTH,0.2,FLOOR_HEIGHT); // w, h, d // x, y z
-CWall g_walls[3] = {CWall(0.2,1,FLOOR_HEIGHT), CWall(0.2,1,FLOOR_HEIGHT), CWall(FLOOR_WIDTH,1,0.2)};
-enum wallDirection {LEFT = 0, RIGHT, TOP};
 
+CWall g_wall(FLOOR_WIDTH, 0.2, FLOOR_HEIGHT); // w, h, d // x, y, z
+CWall g_walls[3] = {CWall(0.2, 1, FLOOR_HEIGHT), CWall(0.2, 1, FLOOR_HEIGHT), CWall(FLOOR_WIDTH, 1, 0.2)};
 
-const int NO_SPHERE = 50;
-const int WALL_ID = 1000;
 int rotate_x = 0, rotate_y = 0;
 int choice = 1;
 int life = 3;
@@ -174,9 +175,7 @@ void rotate(int id)
     
     if (id == WALL_ID) {
         glGetDoublev(GL_MODELVIEW_MATRIX, g_wall.m_mRotate);
-        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[0].m_mRotate);
-        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[1].m_mRotate);
-        glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[2].m_mRotate);
+        for (i=0; i<3; i++)  glGetDoublev(GL_MODELVIEW_MATRIX, g_walls[i].m_mRotate);
     }
     glPopMatrix();
 }
@@ -288,9 +287,9 @@ void renderScene()
         restartGame();
     }else{
         if (space_flag) {
-            g_shooting_ball.setCenter(x+timeDelta*0.005*g_shooting_ball.dir_x,
-                                      y+timeDelta*0.005*g_shooting_ball.dir_y,
-                                      z+timeDelta*0.005*g_shooting_ball.dir_z);
+            g_shooting_ball.setCenter(x+timeDelta*0.009*g_shooting_ball.dir_x,
+                                      y+timeDelta*0.009*g_shooting_ball.dir_y,
+                                      z+timeDelta*0.009*g_shooting_ball.dir_z);
         }
     }
     
