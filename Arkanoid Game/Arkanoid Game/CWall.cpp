@@ -56,7 +56,7 @@ void CWall::setColor(float r, float g, float b)
 }
 
 bool CWall::hasIntersected(CSphere& ball) {
-    if (ball.center_z <= (-FLOOR_HEIGHT/2 + SPHERE_RADIUS) || ball.center_x <= (-FLOOR_WIDTH/2 + SPHERE_RADIUS)  || ball.center_x >= (FLOOR_WIDTH/2 - SPHERE_RADIUS)) {
+    if (ball.center_z + 0.25 <= (-FLOOR_HEIGHT/2 + SPHERE_RADIUS) || ball.center_x <= (-FLOOR_WIDTH/2 + SPHERE_RADIUS)  || ball.center_x + 0.25  >= (FLOOR_WIDTH/2 - SPHERE_RADIUS)) {
         return true;
     }
     return false;

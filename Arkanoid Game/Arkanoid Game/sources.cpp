@@ -257,7 +257,7 @@ void detectCollision(){
 }
 
 bool detectFalling(){
-    if (g_shooting_ball.center_z >= FLOOR_HEIGHT/2 - SPHERE_RADIUS){
+    if (g_shooting_ball.center_z >= FLOOR_HEIGHT/2 + SPHERE_RADIUS){
         return true;
     }
     return false;
@@ -300,7 +300,7 @@ void renderScene()
 
 void InitObjects()
 {
-    g_user.setColor(0.0, 0.0, 1.0); g_user.setCenter(0.0, 0.0, FLOOR_HEIGHT/2 - SPHERE_RADIUS);
+    g_user.setColor(1.0, 1.0, 1.0); g_user.setCenter(0.0, 0.0, FLOOR_HEIGHT/2 - SPHERE_RADIUS);
     g_shooting_ball.setColor(1.0, 0.0, 0.0); g_shooting_ball.setCenter(0.0, 0.0, FLOOR_HEIGHT/2 - 3 * SPHERE_RADIUS);
     
     g_sphere[0].setCenter(-2.0, 0.0, -2.0);
