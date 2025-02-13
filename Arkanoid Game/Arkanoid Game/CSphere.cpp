@@ -4,14 +4,22 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
-#define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
-
-//#include <iostream>
 #include <math.h>
 #include "CSphere.hpp"
 #include "sources.hpp"
+#include <iostream>
 using namespace std;
+
+#define GL_SILENCE_DEPRECATION
+#if __linux__ 
+  std::cout << "GNU/Linux" << '\n';
+  #include<GL/glut.h>
+#elif _WIN32
+  cout << "Windows" << '\n';
+#else // MacOS, Xcode. 
+  std::cout << "Other Environment." << '\n';
+  #include <GLUT/glut.h>
+#endif
 
 CSphere:: CSphere()
 {
@@ -20,6 +28,7 @@ CSphere:: CSphere()
 
 void CSphere::init()
 {
+    // std::cout << "Test" << '\n';
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
