@@ -16,8 +16,8 @@ using namespace std;
 #define GL_SILENCE_DEPRECATION
 
 #if defined(__linux__) // Or #if __linux__
-  std::cout << "GNU/Linux" << '\n';
-  #include<GL/glut.h>
+  //  std::cout << "GNU/Linux" << '\n';
+  #include <GL/glut.h>
 #elif _WIN32
   std::cout << "Windows" << '\n';
 #else // MacOS, Xcode. 
