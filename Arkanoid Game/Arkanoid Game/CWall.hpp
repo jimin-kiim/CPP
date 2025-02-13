@@ -8,6 +8,7 @@
 #define CWall_hpp
 
 #include <stdio.h>
+#include <GL/glut.h>
 #include "CSphere.hpp"
 class CWall
 {

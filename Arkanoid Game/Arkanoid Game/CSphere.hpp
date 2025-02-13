@@ -9,6 +9,7 @@
 #define CSphere_hpp
 
 #include <stdio.h>
+#include <GL/glut.h>
 
 class CSphere
 {
