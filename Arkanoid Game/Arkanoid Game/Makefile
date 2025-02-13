@@ -37,3 +37,6 @@ CSphere.o: sources.hpp CSphere.hpp
 
 clean:
 	rm -f *.o
+
+delete:
+	rm -f *.out
