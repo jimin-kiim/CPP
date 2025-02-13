@@ -2,6 +2,13 @@
 
 CC = g++
 LINKING = -lglut -lGL -lGLU 
+CFLAGS = -c
+
+ifeq ($(OS), Windows_NT)
+	TARGET := main.exe
+else
+	TARGET := main.out
+endif
 
 
 objects = CSphere.o CWall.o sources.o main.o 
