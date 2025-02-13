@@ -4,6 +4,8 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+#define GL_SILENCE_DEPRECATION
+
 #ifndef constants_hpp
 #define constants_hpp
 
@@ -14,12 +16,10 @@
 using namespace std;
 
 #if defined(__linux__) // Or #if __linux__
-  // std::cout << "GNU/Linux" << '\n';
   #include <GL/glut.h>
 #elif _WIN32
   std::cout << "Windows" << '\n';
 #else // MacOS, Xcode. 
-  std::cout << "Other Environment." << '\n';
   #include <GLUT/glut.h>
 #endif
 

@@ -4,11 +4,20 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+#define GL_SILENCE_DEPRECATION
+
 #ifndef CWall_hpp
 #define CWall_hpp
 
 #include <stdio.h>
-#include <GL/glut.h>
+#if __linux__ 
+  #include <GL/glut.h>
+#elif _WIN32
+  std::cout << "Windows" << '\n';
+#else // MacOS, Xcode. 
+  #include <GLUT/glut.h>
+#endif
+
 #include "CSphere.hpp"
 class CWall
 {

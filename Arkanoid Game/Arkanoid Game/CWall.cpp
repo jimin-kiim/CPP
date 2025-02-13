@@ -4,20 +4,18 @@
 //
 //  Created by 김지민 on 2022/11/12.
 //
+#define GL_SILENCE_DEPRECATION
 
 #include <iostream>
 #include "CWall.hpp"
 #include "sources.hpp"
 using namespace std;
 
-#define GL_SILENCE_DEPRECATION
 #if __linux__ 
-  // std::cout << "GNU/Linux" << '\n';
   #include <GL/glut.h>
 #elif _WIN32
   std::cout << "Windows" << '\n';
 #else // MacOS, Xcode. 
-  std::cout << "Other Environment." << '\n';
   #include <GLUT/glut.h>
 #endif
 
