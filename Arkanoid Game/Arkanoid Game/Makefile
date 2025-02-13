@@ -1,15 +1,27 @@
 ## g++ main.cpp -o OUT -lGL -lGLU -lglut
 
 CC = g++
-LINKING = -lglut -lGL -lGLU 
+CFLAGS = -c
+UNAME_S := $(shell uname 2>/dev/null || echo Unknown)
 
+ifeq ($(OS), Windows_NT)
+    TARGET := main.exe
+	LINKING = -lglut -lGL -lGLU 
+else ifeq ($(UNAME_S), Linux)
+    TARGET := main.linux.out
+	LINKING = -lglut -lGL -lGLU 
+else ifeq ($(UNAME_S), Darwin)
+    TARGET := main.mac.out
+	LINKING = -framework OpenGL -framework GLUT
+else
+    TARGET := main.unknown.out
+endif
 
 objects = CSphere.o CWall.o sources.o main.o 
 hpps = sources.hpp CWall.hpp CSPhere.hpp
-# cpps = sources.cpp CWall.cpp CSPhere.cpp
 
 main.out : $(objects) 
-	$(CC) $(objects) -o main.out $(LINKING)
+	$(CC) $(objects) -o $(TARGET) $(LINKING)
 
 main.o: sources.hpp 
 	$(CC) -c main.cpp
