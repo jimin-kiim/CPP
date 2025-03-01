@@ -1,4 +1,5 @@
-## g++ main.cpp -o OUT -lGL -lGLU -lglut
+# g++ main.cpp -o OUT -lGL -lGLU -lglut
+# https://web.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html
 
 CC = g++
 CFLAGS = -c
