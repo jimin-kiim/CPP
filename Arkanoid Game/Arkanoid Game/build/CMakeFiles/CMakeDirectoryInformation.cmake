@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/Users/kimjimin/Developer/CPP/build")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

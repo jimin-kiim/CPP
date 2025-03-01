@@ -56,7 +56,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/kimjimin/Developer/CPP/build
+CMAKE_BINARY_DIR = "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ArkanoidGame.dir/depend.make
@@ -75,7 +75,7 @@ CMakeFiles/ArkanoidGame.dir/codegen:
 CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o: CMakeFiles/ArkanoidGame.dir/flags.make
 CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o: /Users/kimjimin/Developer/CPP/Arkanoid\ Game/Arkanoid\ Game/CSphere.cpp
 CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o: CMakeFiles/ArkanoidGame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kimjimin/Developer/CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o -MF CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o.d -o CMakeFiles/ArkanoidGame.dir/CSphere.cpp.o -c "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/CSphere.cpp"
 
 CMakeFiles/ArkanoidGame.dir/CSphere.cpp.i: cmake_force
@@ -89,7 +89,7 @@ CMakeFiles/ArkanoidGame.dir/CSphere.cpp.s: cmake_force
 CMakeFiles/ArkanoidGame.dir/CWall.cpp.o: CMakeFiles/ArkanoidGame.dir/flags.make
 CMakeFiles/ArkanoidGame.dir/CWall.cpp.o: /Users/kimjimin/Developer/CPP/Arkanoid\ Game/Arkanoid\ Game/CWall.cpp
 CMakeFiles/ArkanoidGame.dir/CWall.cpp.o: CMakeFiles/ArkanoidGame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kimjimin/Developer/CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ArkanoidGame.dir/CWall.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ArkanoidGame.dir/CWall.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ArkanoidGame.dir/CWall.cpp.o -MF CMakeFiles/ArkanoidGame.dir/CWall.cpp.o.d -o CMakeFiles/ArkanoidGame.dir/CWall.cpp.o -c "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/CWall.cpp"
 
 CMakeFiles/ArkanoidGame.dir/CWall.cpp.i: cmake_force
@@ -103,7 +103,7 @@ CMakeFiles/ArkanoidGame.dir/CWall.cpp.s: cmake_force
 CMakeFiles/ArkanoidGame.dir/main.cpp.o: CMakeFiles/ArkanoidGame.dir/flags.make
 CMakeFiles/ArkanoidGame.dir/main.cpp.o: /Users/kimjimin/Developer/CPP/Arkanoid\ Game/Arkanoid\ Game/main.cpp
 CMakeFiles/ArkanoidGame.dir/main.cpp.o: CMakeFiles/ArkanoidGame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kimjimin/Developer/CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ArkanoidGame.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ArkanoidGame.dir/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ArkanoidGame.dir/main.cpp.o -MF CMakeFiles/ArkanoidGame.dir/main.cpp.o.d -o CMakeFiles/ArkanoidGame.dir/main.cpp.o -c "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/main.cpp"
 
 CMakeFiles/ArkanoidGame.dir/main.cpp.i: cmake_force
@@ -117,7 +117,7 @@ CMakeFiles/ArkanoidGame.dir/main.cpp.s: cmake_force
 CMakeFiles/ArkanoidGame.dir/sources.cpp.o: CMakeFiles/ArkanoidGame.dir/flags.make
 CMakeFiles/ArkanoidGame.dir/sources.cpp.o: /Users/kimjimin/Developer/CPP/Arkanoid\ Game/Arkanoid\ Game/sources.cpp
 CMakeFiles/ArkanoidGame.dir/sources.cpp.o: CMakeFiles/ArkanoidGame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/kimjimin/Developer/CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ArkanoidGame.dir/sources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ArkanoidGame.dir/sources.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ArkanoidGame.dir/sources.cpp.o -MF CMakeFiles/ArkanoidGame.dir/sources.cpp.o.d -o CMakeFiles/ArkanoidGame.dir/sources.cpp.o -c "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/sources.cpp"
 
 CMakeFiles/ArkanoidGame.dir/sources.cpp.i: cmake_force
@@ -147,7 +147,7 @@ ArkanoidGame: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platfo
 ArkanoidGame: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/System/Library/Frameworks/GLUT.framework
 ArkanoidGame: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/System/Library/Frameworks/Cocoa.framework
 ArkanoidGame: CMakeFiles/ArkanoidGame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/kimjimin/Developer/CPP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ArkanoidGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ArkanoidGame"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ArkanoidGame.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -159,6 +159,6 @@ CMakeFiles/ArkanoidGame.dir/clean:
 .PHONY : CMakeFiles/ArkanoidGame.dir/clean
 
 CMakeFiles/ArkanoidGame.dir/depend:
-	cd /Users/kimjimin/Developer/CPP/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game" /Users/kimjimin/Developer/CPP/build /Users/kimjimin/Developer/CPP/build /Users/kimjimin/Developer/CPP/build/CMakeFiles/ArkanoidGame.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build" "/Users/kimjimin/Developer/CPP/Arkanoid Game/Arkanoid Game/build/CMakeFiles/ArkanoidGame.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/ArkanoidGame.dir/depend
 
